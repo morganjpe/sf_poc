@@ -1,0 +1,475 @@
+/* removed duplicated stuff that's already in sfx.min.css - 2909 - Smiffy */
+
+/* moz */
+
+@-moz-keyframes fadeA {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  1% {
+    opacity: 1;
+    z-index: 5;
+  }
+  24% {
+    opacity: 1;
+    z-index: 5;
+  }
+  25% {
+    opacity: 0;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+@-moz-keyframes fadeB {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  25% {
+    opacity: 0;
+    z-index: 1;
+  }
+  26% {
+    opacity: 1;
+    z-index: 5;
+  }
+  50% {
+    opacity: 1;
+    z-index: 5;
+  }
+  51% {
+    opacity: 0;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+@-moz-keyframes fadeC {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 1;
+  }
+  51% {
+    opacity: 1;
+    z-index: 5;
+  }
+  75% {
+    opacity: 1;
+    z-index: 5;
+  }
+  76% {
+    opacity: 0;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+@-moz-keyframes fadeD {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  75% {
+    opacity: 0;
+    z-index: 1;
+  }
+  76% {
+    opacity: 1;
+    z-index: 5;
+  }
+  99% {
+    opacity: 1;
+    z-index: 5;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+/* webkit */
+
+@-webkit-keyframes fadeA {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  1% {
+    opacity: 1;
+    z-index: 5;
+  }
+  24% {
+    opacity: 1;
+    z-index: 5;
+  }
+  25% {
+    opacity: 0;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+@-webkit-keyframes fadeB {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  25% {
+    opacity: 0;
+    z-index: 1;
+  }
+  26% {
+    opacity: 1;
+    z-index: 5;
+  }
+  50% {
+    opacity: 1;
+    z-index: 5;
+  }
+  51% {
+    opacity: 0;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+@-webkit-keyframes fadeC {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 1;
+  }
+  51% {
+    opacity: 1;
+    z-index: 5;
+  }
+  75% {
+    opacity: 1;
+    z-index: 5;
+  }
+  76% {
+    opacity: 0;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+@-webkit-keyframes fadeD {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  75% {
+    opacity: 0;
+    z-index: 1;
+  }
+  76% {
+    opacity: 1;
+    z-index: 5;
+  }
+  99% {
+    opacity: 1;
+    z-index: 5;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+/* standard */
+
+@keyframes fadeA {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  1% {
+    opacity: 1;
+    z-index: 5;
+  }
+  24% {
+    opacity: 1;
+    z-index: 5;
+  }
+  25% {
+    opacity: 0;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+@keyframes fadeB {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  25% {
+    opacity: 0;
+    z-index: 1;
+  }
+  26% {
+    opacity: 1;
+    z-index: 5;
+  }
+  50% {
+    opacity: 1;
+    z-index: 5;
+  }
+  51% {
+    opacity: 0;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+@keyframes fadeC {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 1;
+  }
+  51% {
+    opacity: 1;
+    z-index: 5;
+  }
+  75% {
+    opacity: 1;
+    z-index: 5;
+  }
+  76% {
+    opacity: 0;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+@keyframes fadeD {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+  75% {
+    opacity: 0;
+    z-index: 1;
+  }
+  76% {
+    opacity: 1;
+    z-index: 5;
+  }
+  99% {
+    opacity: 1;
+    z-index: 5;
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+.fudwrap {
+  z-index: 3;
+}
+
+@media (max-width: 40em) {
+  .fudwrap .fudmain a {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.fudwrap .fudmain .fudblock4 span.red {
+  color: #ed1c24;
+}
+
+.sh-header {
+  box-shadow: none;
+}
+
+.fudblock4 {
+  display: none;
+}
+
+.sh-header {
+  box-shadow: none;
+}
+
+@media (max-width: 40em) {
+  .fudwrap .fudmain .fudblock1 {
+    -webkit-animation: fadeA 20s linear infinite;
+    -moz-animation: fadeA 20s linear infinite;
+    animation: fadeA 20s linear infinite;
+  }
+
+  .fudwrap .fudmain .fudblock2 {
+    -webkit-animation: fadeB 20s linear infinite;
+    -moz-animation: fadeB 20s linear infinite;
+    animation: fadeB 20s linear infinite;
+  }
+
+  .fudwrap .fudmain .fudblock3 {
+    -webkit-animation: fadeC 20s linear infinite;
+    -moz-animation: fadeC 20s linear infinite;
+    animation: fadeC 20s linear infinite;
+  }
+
+  .fudblock4 {
+    display: block;
+  }
+
+  .fudwrap .fudmain .fudblock4 {
+    width: 100%;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    opacity: 0;
+    -webkit-animation: fadeD 20s linear infinite;
+    -moz-animation: fadeD 20s linear infinite;
+    animation: fadeD 20s linear infinite;
+  }
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.screwfix-regular {
+  font-family: "screwfix_betaregular", arial, sans-serif;
+}
+.text-18 {
+  font-size: 18px;
+}
+
+@media (min-width: 481px) {
+  .text-small-up-20 {
+    font-size: 20px;
+  }
+}
+
+.line-height-1 {
+  line-height: 1;
+}
+
+.text-white {
+  color: #fff;
+}
+.text-upper {
+  text-transform: uppercase;
+}
+.text-centre {
+  text-align: center;
+}
+
+.margin-0 {
+  margin: 0;
+}
+.padding-15 {
+  padding: 15px;
+}
+
+/* lg-only */
+@media (min-width: 1025px) {
+  .margin-lg-auto {
+    margin: auto;
+  }
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-bottom: 8px solid transparent;
+  border-top: 8px solid transparent;
+  border-left: 8px solid #fff;
+  margin: 0 3px -1px;
+  display: inline-block;
+}
+
+.fuds-smart-container {
+  min-height: 50px;
+}
+
+.bg-sfx-red {
+  background-color: #ed1c24;
+}
+.bg-sfx-blue {
+  background-color: #0053a0;
+}
+
+.bg-loading > div {
+  visibility: hidden;
+}
+
+/* android app */
+.fud-app {
+  padding: 0 20px;
+}
+
+.fud-app-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 66px;
+}
+
+.fud-app-link {
+  text-decoration: none;
+}
+
+.fud-app-logo {
+  width: 37px;
+  height: 37px;
+}
+
+.fud-app-title {
+  font-size: 14px;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0;
+  padding: 0 10px;
+  font-family: "screwfix_betaregular", arial, sans-serif;
+}
