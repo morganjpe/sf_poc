@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
-  const [search, setSearch] = useState("");
-  isResponsiveNav;
+  const [search, setSearch] = useState('');
+
   return (
     <header
       className="sh-wrapper js--site-header"
@@ -10,51 +10,51 @@ const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
       style={
         isResponsiveNav
           ? {
-              boxShadow: "none",
+              boxShadow: 'none',
               zIndex: 50,
             }
           : {}
       }
     >
-      <div className="sh-0" style={{ display: "none" }}>
+      <div className="sh-0" style={{ display: 'none' }}>
         <div className="sh-resize">
           <h2>
-            Welcome please select your location{" "}
-            <a href="#" className="btn-close-location">
+            Welcome please select your location{' '}
+            <a href="/" className="btn-close-location">
               close X
             </a>
           </h2>
           <ul className="n">
             <li>
-              <span className="flag rg--ie"></span>
+              <span className="flag rg--ie" />
               <span className="flag--content">
-                <a href="#">Visit Screwfix.ie</a> -{" "}
-                <span id="flag1-prod-num">19,000.00</span>Available online,
-                delivery in 2-3 working days
+                <a href="/">Visit Screwfix.ie</a> -{' '}
+                <span id="flag1-prod-num">19,000.00</span>
+                Available online, delivery in 2-3 working days
               </span>
             </li>
             <li>
-              <span className="flag rg--eu"></span>
+              <span className="flag rg--eu" />
               <span className="flag--content">
-                <a href="#">Visit Screwfix.eu</a> -{" "}
-                <span id="flag1-prod-num">19,000.00</span>Available online,
-                delivery in 2-3 working days
+                <a href="/">Visit Screwfix.eu</a> -{' '}
+                <span id="flag1-prod-num">19,000.00</span>
+                Available online, delivery in 2-3 working days
               </span>
             </li>
             <li>
-              <span className="flag rg--de"></span>
+              <span className="flag rg--de" />
               <span className="flag--content">
-                <a href="#">Visit Screwfix.de</a> -{" "}
-                <span id="flag1-prod-num">19,000.00</span>Available online,
-                delivery in 2-3 working days
+                <a href="/">Visit Screwfix.de</a> -{' '}
+                <span id="flag1-prod-num">19,000.00</span>
+                Available online, delivery in 2-3 working days
               </span>
             </li>
             <li>
-              <span className="flag rg--uk"></span>
+              <span className="flag rg--uk" />
               <span className="flag--content">
-                <a href="#">Visit Screwfix.com</a> -{" "}
-                <span id="flag1-prod-num">19,000.00</span>Available online,
-                delivery in 2-3 working days
+                <a href="/">Visit Screwfix.com</a> -{' '}
+                <span id="flag1-prod-num">19,000.00</span>
+                Available online, delivery in 2-3 working days
               </span>
             </li>
           </ul>
@@ -82,17 +82,18 @@ const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
             href="https://www.screwfix.com/help/helphome"
             className="sh-top--help"
           >
-            Need Help<span className="icon-help-circled"></span>
+            Need Help
+            <span className="icon-help-circled" />
           </a>
 
           <div className="sh-top--vat">
-            <a id="Inc_VAT_toggle" href="" className="inc">
+            <a id="Inc_VAT_toggle" href="/" className="inc">
               INC VAT
             </a>
 
-            <a href="" className="toggle"></a>
+            {/* <a href="/" className="toggle" /> */}
 
-            <a id="Ex_VAT_toggle" href="" className="ex">
+            <a id="Ex_VAT_toggle" href="/" className="ex">
               EX VAT
             </a>
           </div>
@@ -119,14 +120,17 @@ const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
           </div>
 
           <div
+            tabIndex={-1}
+            role="button"
             onClick={() => setIsResponsiveNav(!isResponsiveNav)}
-            className={isResponsiveNav ? "btn-browse open" : "btn-browse"}
+            onKeyDown={() => setIsResponsiveNav(!isResponsiveNav)}
+            className={isResponsiveNav ? 'btn-browse open' : 'btn-browse'}
           >
-            <div className="icon-menu"></div>
+            <div className="icon-menu" />
             <div className="btn-text">
               Browse <span className="sm-hide">store</span>
             </div>
-            <div className="arrow-icon icon-down-dir"></div>
+            <div className="arrow-icon icon-down-dir" />
           </div>
 
           <div className="sh-right">
@@ -136,11 +140,11 @@ const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
                   className="search"
                   style={{
                     //   "border-left-width: 1px;"
-                    borderLeftWidth: "1px",
+                    borderLeftWidth: '1px',
                   }}
                 >
-                  <a href="#">
-                    <i className="icon icon-search"></i>
+                  <a href="/">
+                    <i className="icon icon-search" />
                     <span>Search</span>
                   </a>
                 </li>
@@ -150,13 +154,13 @@ const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
                     id="header_link_sign_in"
                     href="https://www.screwfix.com/loginpage"
                   >
-                    <i className="icon icon-user"></i>
+                    <i className="icon icon-user" />
                     <span>Your Account</span>
                     <span className="user-name">Sign in / Register</span>
                   </a>
                   <script>var userSignin = false;</script>
 
-                  <div className="sh-acc__bg"></div>
+                  <div className="sh-acc__bg" />
                   <div className="sh-acc__options">
                     <ul className="sh-acc__opt">
                       <li>
@@ -237,7 +241,7 @@ const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
                     href="https://www.screwfix.com/jsp/tradeCounter/tradeCounterPage.jsp"
                   >
                     <i className="icon icon-location">
-                      <i className="dot"></i>
+                      <i className="dot" />
                     </i>
 
                     <span className="store-text replaced">Store locator</span>
@@ -247,7 +251,7 @@ const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
 
                 <li className="checkout">
                   <a href="https://www.screwfix.com/jsp/trolley/trolleyPage.jsp">
-                    <i className="icon icon-basket"></i>
+                    <i className="icon icon-basket" />
                     <span>Checkout</span>
                   </a>
                 </li>
@@ -264,9 +268,9 @@ const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
                 autoComplete="off"
                 onChange={(e) => setSearch(e.target.value)}
                 value={search}
-                tabIndex="1"
+                tabIndex="-1"
               />
-              <i className="icon icon-search"></i>
+              <i className="icon icon-search" />
               <input
                 title="Search"
                 className="search-btn  icon icon-search"
@@ -278,9 +282,9 @@ const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
               <div
                 id="mainSearch-suggestions"
                 className="sh-search__sugg"
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
               >
-                <ul className="sh-search__sl"></ul>
+                <ul className="sh-search__sl" />
               </div>
             </div>
           </div>

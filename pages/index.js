@@ -1,5 +1,5 @@
-import Head from "next/head";
+// import Head from "next/head";
 
 export default function Home() {
-  return <div>homepage hello moto</div>;
+    return <div>homepage hello moto</div>;
 }

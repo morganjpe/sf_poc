@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 // components
-import Brand from "./brand";
-import Nav from "./nav";
+import Brand from './brand';
+import Nav from './nav';
 
 const Header = () => {
   const [isResponsiveNav, setIsResponsiveNav] = useState(false);
