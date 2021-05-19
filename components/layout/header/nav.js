@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
-import { useContext } from "react";
+/* eslint-disable no-nested-ternary */
+
+import { useState, useEffect, useContext } from 'react';
+
 import {
   BrComponentContext,
   BrManageMenuButton,
   BrPageContext,
-} from "@bloomreach/react-sdk";
+} from '@bloomreach/react-sdk';
 
 const Nav = ({ isResponsiveNav }) => {
   const [hovered, setIsHovered] = useState(false);
@@ -22,7 +24,7 @@ const Nav = ({ isResponsiveNav }) => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+    window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
   });
 
   return (
@@ -32,21 +34,21 @@ const Nav = ({ isResponsiveNav }) => {
         className={
           isResponsiveNav
             ? page.isPreview()
-              ? "main-nav open has-edit-button"
-              : "main-nav open"
+              ? 'main-nav open has-edit-button'
+              : 'main-nav open'
             : page.isPreview()
-            ? "main-nav has-edit-button"
-            : "main-nav"
+            ? 'main-nav has-edit-button'
+            : 'main-nav'
         }
         style={{
           top: isResponsiveNav
             ? windowWidth <= 640
-              ? "-338px"
-              : "197px"
+              ? '-338px'
+              : '197px'
             : undefined,
           borderTopWidth: isResponsiveNav
             ? windowWidth <= 640 && isResponsiveNav
-              ? "500px"
+              ? '500px'
               : undefined
             : undefined,
         }}
@@ -54,35 +56,33 @@ const Nav = ({ isResponsiveNav }) => {
         <BrManageMenuButton menu={menu} />
         <div className="sh-resize">
           <div
-            className={hovered ? "menu-tier-1 js-hide" : "menu-tier-1"}
+            className={hovered ? 'menu-tier-1 js-hide' : 'menu-tier-1'}
             style={{ zIndex: hovered ? 20 : 9 }}
           >
             <ul className="mn">
               <li className="first">DEPARTMENTS</li>
-              {menu.getItems().map((levelOne) => {
-                return (
-                  <li key={levelOne.getName()} {...props}>
-                    <a href="/">{levelOne.getName()}</a>
+              {menu.getItems().map((levelOne) => (
+                <li key={levelOne.getName()} {...props}>
+                  <a href="/">{levelOne.getName()}</a>
 
-                    {levelOne.getChildren().length > 0 && (
-                      <div className="menu-tier-2">
-                        {levelOne.getChildren().map((levelTwo) => (
-                          <dl key={levelTwo.getName()}>
-                            <dt>
-                              <a href="/">{levelTwo.getName()}</a>
-                            </dt>
-                            {levelTwo.getChildren().map((levelThree) => (
-                              <dd key={levelThree.getName()}>
-                                <a href="/">{levelThree.getName()}</a>
-                              </dd>
-                            ))}
-                          </dl>
-                        ))}
-                      </div>
-                    )}
-                  </li>
-                );
-              })}
+                  {levelOne.getChildren().length > 0 && (
+                    <div className="menu-tier-2">
+                      {levelOne.getChildren().map((levelTwo) => (
+                        <dl key={levelTwo.getName()}>
+                          <dt>
+                            <a href="/">{levelTwo.getName()}</a>
+                          </dt>
+                          {levelTwo.getChildren().map((levelThree) => (
+                            <dd key={levelThree.getName()}>
+                              <a href="/">{levelThree.getName()}</a>
+                            </dd>
+                          ))}
+                        </dl>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
