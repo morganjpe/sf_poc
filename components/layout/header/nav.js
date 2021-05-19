@@ -63,20 +63,23 @@ const Nav = ({ isResponsiveNav }) => {
                 return (
                   <li key={levelOne.getName()} {...props}>
                     <a href="/">{levelOne.getName()}</a>
-                    <div className="menu-tier-2">
-                      {levelOne.getChildren().map((levelTwo) => (
-                        <dl key={levelTwo.getName()}>
-                          <dt>
-                            <a href="/">{levelTwo.getName()}</a>
-                          </dt>
-                          {levelTwo.getChildren().map((levelThree) => (
-                            <dd key={levelThree.getName()}>
-                              <a href="/">{levelThree.getName()}</a>
-                            </dd>
-                          ))}
-                        </dl>
-                      ))}
-                    </div>
+
+                    {levelOne.getChildren().length > 0 && (
+                      <div className="menu-tier-2">
+                        {levelOne.getChildren().map((levelTwo) => (
+                          <dl key={levelTwo.getName()}>
+                            <dt>
+                              <a href="/">{levelTwo.getName()}</a>
+                            </dt>
+                            {levelTwo.getChildren().map((levelThree) => (
+                              <dd key={levelThree.getName()}>
+                                <a href="/">{levelThree.getName()}</a>
+                              </dd>
+                            ))}
+                          </dl>
+                        ))}
+                      </div>
+                    )}
                   </li>
                 );
               })}
