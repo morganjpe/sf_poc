@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import {
   BrComponentContext,
-  //   BrManageMenuButton,
+  BrManageMenuButton,
   BrPageContext,
 } from "@bloomreach/react-sdk";
 
-const Nav = () => {
+const Nav = ({ isResponsiveNav }) => {
   const [hovered, setIsHovered] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   // bloomreach content
   const component = useContext(BrComponentContext);
@@ -20,15 +21,44 @@ const Nav = () => {
     onMouseLeave: () => setIsHovered(false),
   };
 
+  useEffect(() => {
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+  });
+
   return (
     <>
-      <nav id="site-navigation" className="main-nav">
+      <nav
+        id="site-navigation"
+        className={
+          isResponsiveNav
+            ? page.isPreview()
+              ? "main-nav open has-edit-button"
+              : "main-nav open"
+            : page.isPreview()
+            ? "main-nav has-edit-button"
+            : "main-nav"
+        }
+        style={{
+          top: isResponsiveNav
+            ? windowWidth <= 640
+              ? "-338px"
+              : "197px"
+            : undefined,
+          borderTopWidth: isResponsiveNav
+            ? windowWidth <= 640 && isResponsiveNav
+              ? "500px"
+              : undefined
+            : undefined,
+        }}
+      >
+        <BrManageMenuButton menu={menu} />
         <div className="sh-resize">
           <div
             className={hovered ? "menu-tier-1 js-hide" : "menu-tier-1"}
             style={{ zIndex: hovered ? 20 : 9 }}
           >
             <ul className="mn">
+              <li className="first">DEPARTMENTS</li>
               {menu.getItems().map((levelOne) => {
                 return (
                   <li key={levelOne.getName()} {...props}>
@@ -54,7 +84,7 @@ const Nav = () => {
           </div>
         </div>
       </nav>
-      {hovered && <div className="overlay" />}
+      {(hovered || isResponsiveNav) && <div className="overlay" />}
     </>
   );
 };

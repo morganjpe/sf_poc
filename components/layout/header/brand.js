@@ -1,10 +1,21 @@
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({ isResponsiveNav, setIsResponsiveNav }) => {
   const [search, setSearch] = useState("");
-
+  isResponsiveNav;
   return (
-    <header className="sh-wrapper js--site-header" role="banner">
+    <header
+      className="sh-wrapper js--site-header"
+      role="banner"
+      style={
+        isResponsiveNav
+          ? {
+              boxShadow: "none",
+              zIndex: 50,
+            }
+          : {}
+      }
+    >
       <div className="sh-0" style={{ display: "none" }}>
         <div className="sh-resize">
           <h2>
@@ -107,7 +118,10 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="btn-browse">
+          <div
+            onClick={() => setIsResponsiveNav(!isResponsiveNav)}
+            className={isResponsiveNav ? "btn-browse open" : "btn-browse"}
+          >
             <div className="icon-menu"></div>
             <div className="btn-text">
               Browse <span className="sm-hide">store</span>
