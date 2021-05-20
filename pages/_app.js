@@ -9,33 +9,13 @@ import Header from '../components/layout/header';
 import Fuds from '../components/layout/fuds';
 import Footer from '../components/layout/footer';
 
-// const mapping = {
-//   BannerCollection,
-//   Content,
-//   CtaBanner,
-//   Images,
-//   Map,
-//   MultiBannerCarousel,
-//   Navigation,
-//   PageCatalog,
-//   PathwaysRecommendations,
-//   Product,
-//   ProductGrid,
-//   ProductHighlight,
-//   ProductSearch,
-//   SingleBannerCarousel,
-//   SearchBar,
-//   TitleAndText,
-//   Video,
-// };
-
-function MyApp({ Component, pageProps, router }) {
+function MyApp({ Component, pageProps }) {
   const configuration = {
     endpoint:
       'https://screwfix.bloomreach.io/delivery/site/v1/channels/brxsaas/pages',
     endpointQueryParameter: 'endpoint',
     httpClient: axios,
-    path: router.asPath, // ${window.location.pathname}${window.location.search}
+    // path: router.asPath, // ${window.location.pathname}${window.location.search}
   };
 
   return (
@@ -45,16 +25,6 @@ function MyApp({ Component, pageProps, router }) {
       </BrComponent>
       <Fuds />
       <main id="container-main" className="wrp">
-        {/* <BrPageContext.Consumer>
-            {(page) => (
-              <BrComponent path="CtaBanner">
-                <div>
-                  CTA Banner
-                  <BrComponent />
-                </div>
-              </BrComponent>
-            )}
-          </BrPageContext.Consumer> */}
         <Component {...pageProps} />;
       </main>
       <Footer />
