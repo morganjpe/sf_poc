@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 
 import {
   BrComponentContext,
@@ -10,7 +10,7 @@ import {
 
 const Nav = ({ isResponsiveNav }) => {
   const [hovered, setIsHovered] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   // bloomreach content
   const component = useContext(BrComponentContext);
@@ -23,9 +23,9 @@ const Nav = ({ isResponsiveNav }) => {
     onMouseLeave: () => setIsHovered(false),
   };
 
-  useEffect(() => {
-    window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
-  });
+  // useEffect(() => {
+  //   window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
+  // });
 
   return (
     <>
@@ -40,18 +40,20 @@ const Nav = ({ isResponsiveNav }) => {
             ? 'main-nav has-edit-button'
             : 'main-nav'
         }
-        style={{
-          top: isResponsiveNav
-            ? windowWidth <= 640
-              ? '-338px'
-              : '197px'
-            : undefined,
-          borderTopWidth: isResponsiveNav
-            ? windowWidth <= 640 && isResponsiveNav
-              ? '500px'
-              : undefined
-            : undefined,
-        }}
+        style={
+          {
+            // top: isResponsiveNav
+            //   ? windowWidth <= 640
+            //     ? '-338px'
+            //     : '197px'
+            //   : undefined,
+            // borderTopWidth: isResponsiveNav
+            //   ? windowWidth <= 640 && isResponsiveNav
+            //     ? '500px'
+            //     : undefined
+            //   : undefined,
+          }
+        }
       >
         <BrManageMenuButton menu={menu} />
         <div className="sh-resize">

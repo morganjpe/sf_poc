@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { Page, bloomreachProps } from '../components/cms/page';
 
-const Home = ({ configuration, page }) => (
+const Test = ({ configuration, page }) => (
   <Page page={page} configuration={{ ...configuration, httpClient: axios }} />
 );
 
-export default Home;
+export default Test;
 
-Home.getInitialProps = async (ctx) => bloomreachProps(ctx);
+Test.getInitialProps = async (ctx) => bloomreachProps(ctx);
