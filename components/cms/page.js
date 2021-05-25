@@ -1,10 +1,11 @@
 // import Head from "next/head";
 import axios from 'axios';
-import { BrComponent, BrPageContext, BrPage } from '@bloomreach/react-sdk';
+import { BrComponent, BrPage } from '@bloomreach/react-sdk';
 import { initialize } from '@bloomreach/spa-sdk';
 
 import Banner from '../banners';
-import Certona from '../cards/Certona';
+
+import { CertonaCollection } from '../cards/certona';
 
 import Header from '../layout/header';
 import Fuds from '../layout/fuds';
@@ -12,7 +13,7 @@ import Footer from '../layout/footer';
 
 const mapping = {
   BannerFullWidthh: Banner,
-  'Certona Card': Certona,
+  certonaGroup: CertonaCollection,
 };
 
 export const Page = ({ configuration, page, children }) => (
@@ -21,10 +22,6 @@ export const Page = ({ configuration, page, children }) => (
       <Header />
     </BrComponent>
     <Fuds />
-
-    <BrPageContext.Consumer>
-      {(data) => console.log(data)}
-    </BrPageContext.Consumer>
     <div id="container-main" className="wrp">
       <div className="inner">
         <BrComponent path="main" />
