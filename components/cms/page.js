@@ -4,8 +4,10 @@ import { BrComponent, BrPage } from '@bloomreach/react-sdk';
 import { initialize } from '@bloomreach/spa-sdk';
 
 import Banner from '../banners';
-
 import { CertonaCollection } from '../cards/certona';
+import { CategoryCollection } from '../cards/category';
+import BrandCarousel from '../carousel/brand';
+import HTMLContent from '../custom';
 
 import Header from '../layout/header';
 import Fuds from '../layout/fuds';
@@ -14,9 +16,12 @@ import Footer from '../layout/footer';
 const mapping = {
   BannerFullWidthh: Banner,
   certonaGroup: CertonaCollection,
+  BrandSlider: BrandCarousel,
+  HTMLComponent: HTMLContent,
+  CategoryBlockCollection: CategoryCollection,
 };
 
-export const Page = ({ configuration, page, children }) => (
+export const Page = ({ configuration, page, children, hasMainContent }) => (
   <BrPage configuration={{ ...configuration }} page={page} mapping={mapping}>
     <BrComponent path="menu">
       <Header />
@@ -24,7 +29,7 @@ export const Page = ({ configuration, page, children }) => (
     <Fuds />
     <div id="container-main" className="wrp">
       <div className="inner">
-        <BrComponent path="main" />
+        {hasMainContent && <BrComponent path="main" />}
         {children}
       </div>
     </div>

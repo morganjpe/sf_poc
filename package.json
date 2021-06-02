@@ -11,9 +11,13 @@
     "@bloomreach/react-sdk": "^14.5.1",
     "@bloomreach/spa-sdk": "^14.5.1",
     "axios": "^0.21.1",
+    "dompurify": "^2.2.9",
     "next": "10.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-html-parser": "^2.0.2",
+    "react-responsive-carousel": "^3.2.18",
+    "react-slick": "^0.28.1",
     "swr": "^0.5.6",
     "use-debounce": "^6.0.1"
   },

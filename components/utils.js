@@ -1,8 +1,6 @@
 const getEffectiveMultipleDocumentParameters = (page, models, maxCount) =>
   [...Array(maxCount).keys()]
     .map((n) => {
-      console.log(n);
-
       const parameterName = `card${n + 1}`;
       const ref = models[`card${n + 1}`];
       return {

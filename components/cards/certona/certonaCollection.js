@@ -14,7 +14,10 @@ const CertonaGroup = ({ component, page }) => {
     >
       {docParams.map(({ document }) => {
         const { description, sku } = document.getData();
-        return <CertonaCard description={description} sku={sku} />;
+        const key = Date.now();
+        return (
+          <CertonaCard keyProp={key} description={description} sku={sku} />
+        );
       })}
     </div>
   );

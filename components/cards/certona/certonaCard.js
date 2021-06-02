@@ -5,7 +5,7 @@ const savingProps = (price, sale) => ({
   total: price - sale,
 });
 
-const CertonaTile = ({ description, sku }) => {
+const CertonaTile = ({ description, sku, keyProp }) => {
   const { product, isLoading, isError } = useProductApi(sku);
 
   if (isLoading || isError || !product) {
@@ -16,7 +16,7 @@ const CertonaTile = ({ description, sku }) => {
 
   return (
     <div
-      key={description}
+      key={keyProp}
       style={{ float: 'none' }}
       className="lg-4 md-8 sm-24 cols"
     >
