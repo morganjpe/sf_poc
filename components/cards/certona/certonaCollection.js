@@ -1,3 +1,5 @@
+import { BrManageContentButton } from '@bloomreach/react-sdk';
+
 import getEffectiveMultipleDocumentParameters from '../../utils';
 import CertonaCard from './certonaCard';
 
@@ -7,6 +9,7 @@ const CertonaGroup = ({ component, page }) => {
 
   return (
     <div
+      className={page.isPreview() ? 'has-edit-button' : ''}
       style={{
         display: 'flex',
         padding: '20px 0',
@@ -14,9 +17,23 @@ const CertonaGroup = ({ component, page }) => {
     >
       {docParams.map(({ document }) => {
         const { description, sku } = document.getData();
-        const key = Date.now();
+
         return (
-          <CertonaCard keyProp={key} description={description} sku={sku} />
+          <div
+            key={`${Date.now()}_${sku}`}
+            style={{ float: 'none' }}
+            className="lg-4 md-8 sm-24 cols"
+          >
+            <BrManageContentButton
+              content={document}
+              documentTemplateQuery="new-banner-document"
+              folderTemplateQuery="new-banner-folder"
+              parameter="document"
+              root="banners"
+              relative
+            />
+            <CertonaCard description={description} sku={sku} />
+          </div>
         );
       })}
     </div>
