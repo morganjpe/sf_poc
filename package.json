@@ -5,8 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+<<<<<<< package.json
+     "start": "next start -p 3000"
     "test": "jest"
+=======
+    "start": "next start -p 3000"
+>>>>>>> package.json
   },
   "dependencies": {
     "@bloomreach/react-sdk": "^14.5.1",
