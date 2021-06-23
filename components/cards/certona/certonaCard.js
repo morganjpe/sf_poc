@@ -17,6 +17,7 @@ const CertonaTile = ({ description, sku }) => {
   return (
     <div style={{ float: 'none' }} className="ct__pt">
       <div
+        data-tealium="test"
         className="certona-tile__container ct__pt__e"
         title={description}
         style={{ float: 'none' }}
@@ -50,7 +51,9 @@ const CertonaTile = ({ description, sku }) => {
 
                 <div className="ct__price-before">
                   {product.price !== undefined && (
-                    <span className="ct__price-was">Was £{product.price}</span>
+                    <span data-testid="price" className="ct__price-was">
+                      Was £{product.price}
+                    </span>
                   )}
 
                   <span className="ct__price-save">
