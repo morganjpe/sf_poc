@@ -1,7 +1,12 @@
-import { screen, render } from '@testing-library/react';
+import { screen, render, cleanup } from '@testing-library/react';
+
 import DotdBanner from '../dotd';
 
+// configure({ asyncUtilTimeout: 5000 });
+
 // Deal of the Day ends midnight, Deal of the Day ends 11pm, Deal of the Week, Deal of the Weekend
+
+afterEach(cleanup);
 
 const PATH = 'http://www.screwfix.com/';
 const IMG_DAY = `${PATH}/assets/img/deal-logo.png`;
@@ -57,3 +62,19 @@ describe('<DotdBanner /> Component as "Deal of the Weekend"', () => {
     );
   });
 });
+
+// describe('<DotdBanner /> Component should recieve properties from API', () => {
+//   it('should display product name', async () => {
+//     render(<DotdBanner dealImage="Deal of the Week" sku="91024" />);
+//     // const text = await screen.findByText('Bath waste with plastic plug');
+//     // expect(text).toBeInTheDocument();
+
+//     expect(
+//       await screen.findByText('Bath waste with plastic plug')
+//     ).toBeInTheDocument();
+
+//     // await waitFor(() => {
+
+//     // })
+//   });
+// });
