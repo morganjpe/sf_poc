@@ -9,8 +9,6 @@ const useProductApi = (sku) => {
     axios.get(queryString(prodSku))
   );
 
-  console.log(data);
-
   return {
     product: data && data.data ? data.data.response.docs[0] : null,
     isLoading: !error && !data,
