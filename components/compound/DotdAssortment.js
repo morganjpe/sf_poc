@@ -45,55 +45,53 @@ const DotdAssortment = ({ component, page }) => {
       <div className="row">
         <div className="lg-24 md-24 sm-24">
           <div className="homepage_dotd">
-            <div className="dotd_tue_wk05">
-              <div
-                style={{
-                  height:
-                    typeof window !== 'undefined' && window.innerWidth >= 1024
-                      ? `${height}px`
-                      : 'initial',
-                }}
-                className="lg-9 md-24 sm-24 cols equal"
-              >
-                {dotdProps && (
-                  <>
-                    <BrManageContentButton
-                      content={page.getContent(params.dealOfTheDay)}
-                      documentTemplateQuery="DealOfTheDay"
-                      folderTemplateQuery="new-banner-folder"
-                      parameter="document"
-                      root=""
-                      relative
-                    />
-                    <DotdBanner height={height} {...dotdProps} />
-                  </>
-                )}
-              </div>
+            <div
+              style={{
+                height:
+                  typeof window !== 'undefined' && window.innerWidth >= 1024
+                    ? `${height}px`
+                    : 'initial',
+              }}
+              className="lg-9 md-24 sm-24 cols equal"
+            >
+              {dotdProps && (
+                <>
+                  <BrManageContentButton
+                    content={page.getContent(params.dealOfTheDay)}
+                    documentTemplateQuery="DealOfTheDay"
+                    folderTemplateQuery="new-banner-folder"
+                    parameter="document"
+                    root=""
+                    relative
+                  />
+                  <DotdBanner height={height} {...dotdProps} />
+                </>
+              )}
             </div>
           </div>
+        </div>
 
-          <div
-            ref={asstRef}
-            className="homepage_assortment lg-15 md-24 sm-24 tiles equal"
-          >
-            {params &&
-              assortment(params).map((key) => {
-                const { id, ...rest } = page.getContent(key).getData();
-                return (
-                  <div key={id} className="lg-8 md-8 sm-12 cols">
-                    <BrManageContentButton
-                      content={page.getContent(key)}
-                      documentTemplateQuery="CategoryBlock"
-                      folderTemplateQuery="new-banner-folder"
-                      parameter="document"
-                      root=""
-                      relative
-                    />
-                    <CategoryBlock {...rest} />
-                  </div>
-                );
-              })}
-          </div>
+        <div
+          ref={asstRef}
+          className="homepage_assortment lg-15 md-24 sm-24 tiles equal"
+        >
+          {params &&
+            assortment(params).map((key) => {
+              const { id, ...rest } = page.getContent(key).getData();
+              return (
+                <div key={id} className="lg-8 md-8 sm-12 cols">
+                  <BrManageContentButton
+                    content={page.getContent(key)}
+                    documentTemplateQuery="CategoryBlock"
+                    folderTemplateQuery="new-banner-folder"
+                    parameter="document"
+                    root=""
+                    relative
+                  />
+                  <CategoryBlock {...rest} />
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>

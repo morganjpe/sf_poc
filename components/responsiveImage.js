@@ -4,9 +4,11 @@ import useResponsiveBreakpoint from './useResponsiveBreakpoint';
 const ResponsiveImage = ({ images, alt, ...rest }) => {
   const breakpoint = useResponsiveBreakpoint();
 
-  console.log(breakpoint);
-  //   return <Image layout="fill" src={images[breakpoint]} {...rest} />;
-  return <img src={images[breakpoint]} alt={alt} {...rest} />;
+  if (breakpoint) {
+    return <img src={images[breakpoint]} alt={alt} {...rest} />;
+  }
+
+  return '';
 };
 
 export default ResponsiveImage;

@@ -14,11 +14,15 @@ const getBreakpoint = (width) => {
 
 const useResponsiveBreakpoint = () => {
   const [breakpoint, setBreakpoint] = useState(
-    getBreakpoint(typeof window !== 'undefined' ? window.innerWidth : 0)
+    getBreakpoint(typeof window !== 'undefined' ? window.innerWidth : null)
   );
+
+  //   console.log(breakpoint);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      setBreakpoint(getBreakpoint(window.innerWidth));
+
       window.addEventListener('resize', () => {
         const breakpointValue = getBreakpoint(window.innerWidth);
         setBreakpoint(breakpointValue);

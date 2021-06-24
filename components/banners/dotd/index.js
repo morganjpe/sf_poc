@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+// components
+import PromoIcon from './promoIcon';
+
 import { useVat } from '../../../state/vat';
 import ResponsiveImage from '../../responsiveImage';
 
@@ -9,56 +12,6 @@ const dealType = (dealImage) => {
     return 'week';
   }
   return 'day';
-};
-
-// None, Save £, Save %, Save up to £, Save up to %, Half price, Buy x for, Buy x get 1 free, Save over, Great Deal.
-
-const PromoIcon = ({ promoIcon, priceSaving, percentSaving }) => {
-  if (promoIcon === 'Save %') {
-    return (
-      <span className="banner__save-flag">
-        <span className="banner__save-flag-text">Save</span>
-        <span className="banner__save-flag-price">
-          {percentSaving}
-          <sup>%</sup>
-        </span>
-      </span>
-    );
-  }
-
-  if (promoIcon === 'Save up to %') {
-    return (
-      <span className="banner__save-flag">
-        <span className="banner__save-flag-text">Save</span>
-        <span className="banner__save-flag-price">
-          {percentSaving}
-          <sup>%</sup>
-        </span>
-      </span>
-    );
-  }
-
-  if (promoIcon === 'Save £') {
-    <span className="banner__save-flag">
-      <span className="banner__save-flag-text">Save</span>
-      <span className="banner__save-flag-price">
-        {priceSaving}
-        <sup>£</sup>
-      </span>
-    </span>;
-  }
-
-  if (promoIcon === 'Save up to £') {
-    <span className="banner__save-flag">
-      <span className="banner__save-flag-text">Save up to</span>
-      <span className="banner__save-flag-price">
-        {priceSaving}
-        <sup>£</sup>
-      </span>
-    </span>;
-  }
-
-  return <div />;
 };
 
 const DotdBanner = ({
@@ -85,6 +38,7 @@ const DotdBanner = ({
       if (roundelIncVatManual.length) {
         return parseFloat(roundelIncVatManual).toFixed(2).split('.');
       }
+
       if (product && product.price) {
         return parseFloat(product.price).toFixed(2).split('.');
       }
@@ -105,14 +59,16 @@ const DotdBanner = ({
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get(`http://localhost:3000/api/product`, {
-        params: {
-          sku,
-        },
-      });
-      setProduct(data);
-
-      console.log(data);
+      try {
+        const { data } = await axios.get(`http://localhost:3000/api/product`, {
+          params: {
+            sku,
+          },
+        });
+        setProduct(data);
+      } catch (error) {
+        console.log(error);
+      }
     })();
   }, []);
 
@@ -142,7 +98,7 @@ const DotdBanner = ({
             <div className="banner__img-align">
               <ResponsiveImage
                 images={[mobileImage, tabletImage, desktopImage]}
-                className="banner__img swap"
+                className="banner__img"
                 alt={
                   productDescription.length
                     ? productDescription
