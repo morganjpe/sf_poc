@@ -1,0 +1,162 @@
+{
+  "id": "sample/DotdAssortment",
+  "extends": "base/component",
+  "hidden": false,
+  "system": false,
+  "xtype": null,
+  "ctype": "DotdAssortment",
+  "label": "Dotd / Assortment Container",
+  "icon": "",
+  "parameters": [
+    {
+      "name": "dealOfTheDay",
+      "valueType": "string",
+      "required": true,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": null,
+      "system": false,
+      "config": {
+        "pickerConfiguration": "cms-pickers/documents-only",
+        "pickerInitialPath": "",
+        "pickerRememberLastVisited": true,
+        "pickerSelectableNodeTypes": ["DealOfTheDay"],
+        "relative": true,
+        "pickerRootPath": null,
+        "type": "contentpath"
+      }
+    },
+    {
+      "name": "assortment1",
+      "valueType": "string",
+      "required": true,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": null,
+      "system": false,
+      "config": {
+        "pickerConfiguration": "cms-pickers/documents-only",
+        "pickerInitialPath": "",
+        "pickerRememberLastVisited": true,
+        "pickerSelectableNodeTypes": ["CategoryBlock"],
+        "relative": true,
+        "pickerRootPath": null,
+        "type": "contentpath"
+      }
+    },
+    {
+      "name": "assortment2",
+      "valueType": "string",
+      "required": true,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": null,
+      "system": false,
+      "config": {
+        "pickerConfiguration": "cms-pickers/documents-only",
+        "pickerInitialPath": "",
+        "pickerRememberLastVisited": true,
+        "pickerSelectableNodeTypes": ["CategoryBlock"],
+        "relative": true,
+        "pickerRootPath": null,
+        "type": "contentpath"
+      }
+    },
+    {
+      "name": "assortment3",
+      "valueType": "string",
+      "required": true,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": null,
+      "system": false,
+      "config": {
+        "pickerConfiguration": "cms-pickers/documents-only",
+        "pickerInitialPath": "",
+        "pickerRememberLastVisited": true,
+        "pickerSelectableNodeTypes": ["CategoryBlock"],
+        "relative": true,
+        "pickerRootPath": null,
+        "type": "contentpath"
+      }
+    },
+    {
+      "name": "assortment4",
+      "valueType": "string",
+      "required": true,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": null,
+      "system": false,
+      "config": {
+        "pickerConfiguration": "cms-pickers/documents-only",
+        "pickerInitialPath": "",
+        "pickerRememberLastVisited": true,
+        "pickerSelectableNodeTypes": ["CategoryBlock"],
+        "relative": true,
+        "pickerRootPath": null,
+        "type": "contentpath"
+      }
+    },
+    {
+      "name": "assortment5",
+      "valueType": "string",
+      "required": true,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": null,
+      "system": false,
+      "config": {
+        "pickerConfiguration": "cms-pickers/documents-only",
+        "pickerInitialPath": "",
+        "pickerRememberLastVisited": true,
+        "pickerSelectableNodeTypes": ["CategoryBlock"],
+        "relative": true,
+        "pickerRootPath": null,
+        "type": "contentpath"
+      }
+    },
+    {
+      "name": "assortment6",
+      "valueType": "string",
+      "required": true,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": null,
+      "system": false,
+      "config": {
+        "pickerConfiguration": "cms-pickers/documents-only",
+        "pickerInitialPath": "",
+        "pickerRememberLastVisited": true,
+        "pickerSelectableNodeTypes": ["CategoryBlock"],
+        "relative": true,
+        "pickerRootPath": null,
+        "type": "contentpath"
+      }
+    }
+  ],
+  "fieldGroups": [
+    {
+      "name": "Deal of The Day",
+      "parameters": ["dealOfTheDay"]
+    },
+    {
+      "name": "Assortment Cards",
+      "parameters": [
+        "assortment1",
+        "assortment2",
+        "assortment3",
+        "assortment4",
+        "assortment5",
+        "assortment6"
+      ]
+    }
+  ]
+}

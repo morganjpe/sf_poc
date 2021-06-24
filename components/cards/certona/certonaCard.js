@@ -8,11 +8,13 @@ const savingProps = (price, sale) => ({
 const CertonaTile = ({ description, sku }) => {
   const { product, isLoading, isError } = useProductApi(sku);
 
+  console.log(product);
+
   if (isLoading || isError || !product) {
     return <div />;
   }
 
-  const { percentage, total } = savingProps(product.price, product.sale_price);
+  const { percentage, total } = savingProps(product.priceWas, product.price);
 
   return (
     <div style={{ float: 'none' }} className="ct__pt">
@@ -25,11 +27,7 @@ const CertonaTile = ({ description, sku }) => {
         <a href="/" title={description}>
           <div className="certona-tile">
             <div className="ct__product-thumb">
-              <img
-                src={product.thumb_image}
-                alt={description}
-                className="fill"
-              />
+              <img src={product.image} alt={description} className="fill" />
             </div>
 
             <div className="ct__product-info">
@@ -41,7 +39,7 @@ const CertonaTile = ({ description, sku }) => {
                 <div className="ct__price-from">Only:</div>
 
                 <div className="ct__price-now">
-                  <span className="ct__price">{product.sale_price}</span>
+                  <span className="ct__price">{product.price}</span>
                   <span className="ct__price-vat">
                     Inc
                     <br />
@@ -52,13 +50,14 @@ const CertonaTile = ({ description, sku }) => {
                 <div className="ct__price-before">
                   {product.price !== undefined && (
                     <span data-testid="price" className="ct__price-was">
-                      Was £{product.price}
+                      Was £{product.priceWas}
                     </span>
                   )}
-
-                  <span className="ct__price-save">
-                    Save £{total.toFixed(2)}({Math.floor(percentage)}%)
-                  </span>
+                  {product.priceWas !== 0.01 && (
+                    <span className="ct__price-save">
+                      Save £{total.toFixed(2)}({Math.floor(percentage)}%)
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

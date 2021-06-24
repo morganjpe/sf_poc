@@ -8,6 +8,7 @@ import { CertonaCollection } from '../cards/certona';
 import { CategoryCollection } from '../cards/category';
 import BrandCarousel from '../carousel/brand';
 import HTMLContent from '../custom';
+import DotdAssortment from '../compound/DotdAssortment';
 
 import Header from '../layout/header';
 import Fuds from '../layout/fuds';
@@ -19,6 +20,7 @@ const mapping = {
   BrandSlider: BrandCarousel,
   HTMLComponent: HTMLContent,
   CategoryBlockCollection: CategoryCollection,
+  DotdAssortment,
 };
 
 export const Page = ({ configuration, page, children, hasMainContent }) => (
