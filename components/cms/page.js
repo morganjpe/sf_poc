@@ -1,26 +1,26 @@
-// import Head from "next/head";
 import axios from 'axios';
 import { BrComponent, BrPage } from '@bloomreach/react-sdk';
-import { initialize } from '@bloomreach/spa-sdk';
+import { initialize, TYPE_CONTAINER_ITEM_UNDEFINED } from '@bloomreach/spa-sdk';
 
-import Banner from '../banners';
 import { CertonaCollection } from '../cards/certona';
 import { CategoryCollection } from '../cards/category';
 import BrandCarousel from '../carousel/brand';
 import HTMLContent from '../custom';
 import DotdAssortment from '../compound/DotdAssortment';
+// fallback
+import Fallback from './fallback';
 
 import Header from '../layout/header';
 import Fuds from '../layout/fuds';
 import Footer from '../layout/footer';
 
 const mapping = {
-  BannerFullWidthh: Banner,
   certonaGroup: CertonaCollection,
   BrandSlider: BrandCarousel,
   HTMLComponent: HTMLContent,
   CategoryBlockCollection: CategoryCollection,
   DotdAssortment,
+  [TYPE_CONTAINER_ITEM_UNDEFINED]: Fallback,
 };
 
 export const Page = ({ configuration, page, children, hasMainContent }) => (
