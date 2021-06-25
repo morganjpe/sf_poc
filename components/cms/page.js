@@ -2,9 +2,9 @@ import axios from 'axios';
 import { BrComponent, BrPage } from '@bloomreach/react-sdk';
 import { initialize, TYPE_CONTAINER_ITEM_UNDEFINED } from '@bloomreach/spa-sdk';
 
-import { CertonaCollection } from '../cards/certona';
-import { CategoryCollection } from '../cards/category';
-import BrandCarousel from '../carousel/brand';
+// import { CertonaCollection } from '../cards/certona';
+// import { CategoryCollection } from '../cards/category';
+// import BrandCarousel from '../carousel/brand';
 import HTMLContent from '../custom';
 import DotdAssortment from '../compound/DotdAssortment';
 // fallback
@@ -15,10 +15,10 @@ import Fuds from '../layout/fuds';
 import Footer from '../layout/footer';
 
 const mapping = {
-  certonaGroup: CertonaCollection,
-  BrandSlider: BrandCarousel,
+  // certonaGroup: CertonaCollection,
+  // BrandSlider: BrandCarousel,
+  // CategoryBlockCollection: CategoryCollection,
   HTMLComponent: HTMLContent,
-  CategoryBlockCollection: CategoryCollection,
   DotdAssortment,
   [TYPE_CONTAINER_ITEM_UNDEFINED]: Fallback,
 };

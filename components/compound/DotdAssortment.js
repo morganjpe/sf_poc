@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 import { BrManageContentButton } from '@bloomreach/react-sdk';
-import DotdBanner from '../banners/dotd';
+import DotdBanner from '../banners/dotdBanner';
 import { CategoryBlock } from '../cards/category';
 
 const assortment = (cardObject) =>
@@ -29,10 +29,19 @@ const DotdAssortment = ({ component, page }) => {
     }
   }, []);
 
-  const dotdProps =
-    params && params.dealOfTheDay.length
-      ? page.getContent(params.dealOfTheDay).getData()
-      : null;
+  const dotdProps = () => {
+    // has params and has a key
+    if (params && params.dealOfTheDay) {
+      const content = page.getContent(params.dealOfTheDay);
+
+      if (content) {
+        console.log(content);
+        return page.getContent(params.dealOfTheDay).getData();
+      }
+    }
+
+    return null;
+  };
 
   return (
     <div
@@ -54,7 +63,7 @@ const DotdAssortment = ({ component, page }) => {
               }}
               className="lg-9 md-24 sm-24 cols equal"
             >
-              {dotdProps && (
+              {dotdProps() && (
                 <>
                   <BrManageContentButton
                     content={page.getContent(params.dealOfTheDay)}
@@ -64,7 +73,7 @@ const DotdAssortment = ({ component, page }) => {
                     root=""
                     relative
                   />
-                  <DotdBanner height={height} {...dotdProps} />
+                  <DotdBanner height={height} {...dotdProps()} />
                 </>
               )}
             </div>
@@ -99,3 +108,5 @@ const DotdAssortment = ({ component, page }) => {
 };
 
 export default DotdAssortment;
+
+// aDxpHBCclTFiDLKdQgnYLdbSJWGULrgLoTWfxadkMrLNyIhQYuRJQcbbzbZEzxvb

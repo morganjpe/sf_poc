@@ -1,6 +1,6 @@
 import { screen, render, cleanup } from '@testing-library/react';
 
-import DotdBanner from '../dotd';
+import DotdBanner from '../dotdBanner';
 
 // configure({ asyncUtilTimeout: 5000 });
 
