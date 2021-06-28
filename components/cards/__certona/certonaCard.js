@@ -1,4 +1,4 @@
-import useProductApi from './useProductApi';
+import useProductApi from '../../useProductApi';
 
 const savingProps = (price, sale) => ({
   percentage: ((price - sale) / price) * 100,
