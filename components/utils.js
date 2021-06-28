@@ -10,4 +10,16 @@ const getEffectiveMultipleDocumentParameters = (page, models, maxCount) =>
     })
     .filter((docParam) => !!docParam.document);
 
+const diffPercent = (v1, v2) =>
+  Math.floor((Math.abs(v1 - v2) / ((v1 + v2) / 2)) * 100);
+
+export const getSavings = (currentPrice, wasPrice) => {
+  console.log(currentPrice, wasPrice);
+
+  return {
+    percent: diffPercent(currentPrice, wasPrice),
+    difference: (currentPrice - wasPrice).toFixed(2),
+  };
+};
+
 export default getEffectiveMultipleDocumentParameters;

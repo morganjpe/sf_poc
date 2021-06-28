@@ -1,5 +1,9 @@
-import Skeleton from 'react-loading-skeleton';
+// hooks
 import useProductApi from '../../useProductApi';
+import { useVat } from '../../../state/vat';
+
+// components
+import WasPrice from './wasPrice';
 
 interface RangeBannerProps {
   productDescription: string;
@@ -19,6 +23,7 @@ const RangeBanner = ({
   pricePoint,
 }: RangeBannerProps): JSX.Element => {
   const { product, isLoading, isError } = useProductApi(sku);
+  const { incVat } = useVat();
 
   if (isError) return <div />;
 
@@ -31,15 +36,11 @@ const RangeBanner = ({
         <a href={destinationUrl} title={`View all  ${productDescription}`}>
           <div className="certona-tile">
             <div className="ct__product-thumb">
-              {isLoading ? (
-                <Skeleton height={155} />
-              ) : (
-                <img
-                  src={product?.image}
-                  alt={productDescription}
-                  className="fill"
-                />
-              )}
+              <img
+                style={{ maxWidth: '100%' }}
+                src={image}
+                alt={productDescription}
+              />
             </div>
 
             <div className="ct__product-info">
@@ -51,20 +52,33 @@ const RangeBanner = ({
 
               <div className="ct__price-row">
                 <div className="ct__price-from">{pricePoint}:</div>
-                <div className="ct__price-now">
-                  <span className="ct__price"> £20.83 </span>
-                  <span className="ct__price-vat">
-                    ex.
-                    <br />
-                    vat
-                  </span>
-                </div>
-                {turnOffSavingWasPrice === 'false' && (
-                  <div className="ct__price-before">
-                    <span className="ct__price-was"> Was £29.99 </span>
-                    <span className="ct__price-save"> Save £10.00 (33%) </span>
+                {!isLoading && (
+                  <div className="ct__price-now">
+                    <span className="ct__price">
+                      &pound;{incVat ? product?.price : product?.exVatPrice}
+                    </span>
+                    <span className="ct__price-vat">
+                      {incVat ? (
+                        <>
+                          inc.
+                          <br />
+                          vat
+                        </>
+                      ) : (
+                        <>
+                          ex.
+                          <br />
+                          vat
+                        </>
+                      )}
+                    </span>
                   </div>
                 )}
+                <WasPrice
+                  product={product}
+                  incVat={incVat}
+                  turnOffSavingWasPrice={turnOffSavingWasPrice}
+                />
               </div>
             </div>
           </div>
