@@ -6,7 +6,8 @@ import { initialize, TYPE_CONTAINER_ITEM_UNDEFINED } from '@bloomreach/spa-sdk';
 // import { CategoryCollection } from '../cards/category';
 // import BrandCarousel from '../carousel/brand';
 import HTMLContent from '../custom';
-import DotdAssortment from '../compound/DotdAssortment';
+import DotdAssortment from '../compound/dotdAssortment';
+import HalfGrid from '../compound/halfGrid';
 // fallback
 import Fallback from './fallback';
 
@@ -20,6 +21,7 @@ const mapping = {
   // CategoryBlockCollection: CategoryCollection,
   HTMLComponent: HTMLContent,
   DotdAssortment,
+  HalfGrid,
   [TYPE_CONTAINER_ITEM_UNDEFINED]: Fallback,
 };
 

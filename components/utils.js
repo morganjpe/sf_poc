@@ -18,7 +18,7 @@ export const getSavings = (currentPrice, wasPrice) => {
 
   return {
     percent: diffPercent(currentPrice, wasPrice),
-    difference: (currentPrice - wasPrice).toFixed(2),
+    difference: ((currentPrice - wasPrice) * -1).toFixed(2),
   };
 };
 

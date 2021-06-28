@@ -1,0 +1,63 @@
+{
+    "id": "sample/HalfGrid",
+    "extends": "base/component",
+    "hidden": false,
+    "system": false,
+    "xtype": null,
+    "ctype": "HalfGrid",
+    "label": "1/2 Grid",
+    "icon": "",
+    "parameters": [
+      {
+        "name": "left",
+        "valueType": "string",
+        "required": true,
+        "hidden": false,
+        "overlay": false,
+        "defaultValue": "",
+        "displayName": null,
+        "system": false,
+        "config": {
+          "pickerConfiguration": "cms-pickers/documents-only",
+          "pickerInitialPath": "",
+          "pickerRememberLastVisited": true,
+          "pickerSelectableNodeTypes": [],
+          "relative": true,
+          "pickerRootPath": null,
+          "type": "contentpath"
+        }
+      },
+      {
+        "name": "right",
+        "valueType": "string",
+        "required": true,
+        "hidden": false,
+        "overlay": false,
+        "defaultValue": "",
+        "displayName": null,
+        "system": false,
+        "config": {
+          "pickerConfiguration": "cms-pickers/documents-only",
+          "pickerInitialPath": "",
+          "pickerRememberLastVisited": true,
+          "pickerSelectableNodeTypes": [""],
+          "relative": true,
+          "pickerRootPath": null,
+          "type": "contentpath"
+        }
+      }
+    ],
+    "fieldGroups": [
+      {
+        "name": "Deal of The Day",
+        "parameters": ["left"]
+      },
+      {
+        "name": "Assortment Cards",
+        "parameters": [
+          "right"
+        ]
+      }
+    ]
+}
+  

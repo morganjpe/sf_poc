@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 
 import { BrManageContentButton } from '@bloomreach/react-sdk';
-import DotdBanner from '../banners/dotdBanner';
-import { CategoryBlock } from '../cards/category';
+import DotdBanner from '../../banners/dotdBanner';
+import { CategoryBlock } from '../../cards/category';
 
 const assortment = (cardObject) =>
   Object.keys(cardObject)

@@ -5,53 +5,60 @@ import { useVat } from '../../../state/vat';
 // components
 import WasPrice from './wasPrice';
 
-interface RangeBannerProps {
+export interface CardProps {
   productDescription: string;
   sku: string;
   destinationUrl: string;
-  turnOffSavingWasPrice: 'true' | 'false';
+  turnOffSavingWasPrice: boolean;
   image: string;
   pricePoint: 'only' | 'fromOnly';
 }
 
-const RangeBanner = ({
+const Card = ({
   productDescription,
   sku,
   destinationUrl,
   turnOffSavingWasPrice,
   image,
   pricePoint,
-}: RangeBannerProps): JSX.Element => {
+}: CardProps): JSX.Element => {
   const { product, isLoading, isError } = useProductApi(sku);
   const { incVat } = useVat();
 
   if (isError) return <div />;
 
+  console.log(pricePoint);
+
   return (
     <div className="ct__pt">
       <div
         className="certona-tile__container ct__pt__e"
-        title={productDescription}
+        title={productDescription || product?.name}
       >
-        <a href={destinationUrl} title={`View all  ${productDescription}`}>
+        <a
+          href={destinationUrl}
+          title={`View all  ${productDescription || product?.name}`}
+        >
           <div className="certona-tile">
             <div className="ct__product-thumb">
               <img
                 style={{ maxWidth: '100%' }}
-                src={image}
-                alt={productDescription}
+                src={image || product?.image}
+                alt={productDescription || product?.name}
               />
             </div>
 
             <div className="ct__product-info">
               <p className="ct__product-desc">
                 <span className="ct__product-desc__txt">
-                  {productDescription}
+                  {productDescription || product?.name}
                 </span>
               </p>
 
               <div className="ct__price-row">
-                <div className="ct__price-from">{pricePoint}:</div>
+                <div className="ct__price-from">
+                  {/* pricePoint */}from Only:
+                </div>
                 {!isLoading && (
                   <div className="ct__price-now">
                     <span className="ct__price">
@@ -88,4 +95,4 @@ const RangeBanner = ({
   );
 };
 
-export default RangeBanner;
+export default Card;

@@ -5,7 +5,7 @@ import { ProductAttributes } from '../../useProductApi';
 
 interface WasPriceProps {
   product: ProductAttributes | null;
-  turnOffSavingWasPrice: 'true' | 'false';
+  turnOffSavingWasPrice: boolean;
   incVat: boolean;
 }
 
@@ -14,7 +14,7 @@ const WasPrice = ({
   turnOffSavingWasPrice,
   incVat,
 }: WasPriceProps): JSX.Element => {
-  if (!product || turnOffSavingWasPrice === 'true') {
+  if (!product || turnOffSavingWasPrice) {
     return <div />;
   }
 
