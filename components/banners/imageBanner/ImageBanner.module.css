@@ -1,0 +1,32 @@
+.banner-mg-wrap {
+    height: 197px;
+}
+
+.banner-mg-wrap img {
+    height: 197px;
+}
+
+	
+
+@media only screen and (max-width: 64em) and (min-width: 40.063em) {
+.banner-mg-wrap {
+    height: 197px;
+}
+
+.banner-mg-wrap img {
+    height: 197px;
+}
+}
+
+/* MOBILE ONLY */
+@media screen and (max-width: 40em) {
+.banner-mg-wrap {
+    height: 106px;
+}
+
+.banner-mg-wrap img {
+    height: 106px;
+margin-left: -214px;
+
+}
+}

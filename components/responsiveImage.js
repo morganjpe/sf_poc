@@ -8,7 +8,7 @@ const ResponsiveImage = ({ images, alt, ...rest }) => {
     return <img src={images[breakpoint]} alt={alt} {...rest} />;
   }
 
-  return '';
+  return <div />;
 };
 
 export default ResponsiveImage;
