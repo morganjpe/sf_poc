@@ -1,5 +1,9 @@
 const PromoIcon = ({ promoIcon, priceSaving, percentSaving }) => {
-  if (promoIcon === 'Save %') {
+  const icon = promoIcon.selectionValues[0].key.trim();
+
+  console.log(icon === 'Save £');
+
+  if (icon === 'Save %') {
     return (
       <span className="banner__save-flag">
         <span className="banner__save-flag-text">Save</span>
@@ -11,7 +15,7 @@ const PromoIcon = ({ promoIcon, priceSaving, percentSaving }) => {
     );
   }
 
-  if (promoIcon === 'Save up to %') {
+  if (icon === 'Save up to %') {
     return (
       <span className="banner__save-flag">
         <span className="banner__save-flag-text">Save</span>
@@ -23,17 +27,19 @@ const PromoIcon = ({ promoIcon, priceSaving, percentSaving }) => {
     );
   }
 
-  if (promoIcon === 'Save £') {
-    <span className="banner__save-flag">
-      <span className="banner__save-flag-text">Save</span>
-      <span className="banner__save-flag-price">
-        {priceSaving}
-        <sup>£</sup>
+  if (icon === 'Save £') {
+    return (
+      <span className="banner__save-flag">
+        <span className="banner__save-flag-text">Save</span>
+        <span className="banner__save-flag-price">
+          {priceSaving}
+          <sup>£</sup>
+        </span>
       </span>
-    </span>;
+    );
   }
 
-  if (promoIcon === 'Save up to £') {
+  if (icon === 'Save up to £') {
     <span className="banner__save-flag">
       <span className="banner__save-flag-text">Save up to</span>
       <span className="banner__save-flag-price">

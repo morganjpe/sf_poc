@@ -8,6 +8,7 @@ import { initialize, TYPE_CONTAINER_ITEM_UNDEFINED } from '@bloomreach/spa-sdk';
 import HTMLContent from '../custom';
 import DotdAssortment from '../compound/dotdAssortment';
 import HalfGrid from '../compound/halfGrid';
+import FullGrid from '../compound/fullGrid';
 // fallback
 import Fallback from './fallback';
 
@@ -22,6 +23,7 @@ const mapping = {
   HTMLComponent: HTMLContent,
   DotdAssortment,
   HalfGrid,
+  FullGrid,
   [TYPE_CONTAINER_ITEM_UNDEFINED]: Fallback,
 };
 

@@ -35,7 +35,6 @@ const DotdAssortment = ({ component, page }) => {
       const content = page.getContent(params.dealOfTheDay);
 
       if (content) {
-        console.log(content);
         return page.getContent(params.dealOfTheDay).getData();
       }
     }

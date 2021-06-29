@@ -1,0 +1,39 @@
+{
+    "id": "sample/FullGrid",
+    "extends": "base/component",
+    "hidden": false,
+    "system": false,
+    "xtype": null,
+    "ctype": "FullGrid",
+    "label": "Full Width Grid",
+    "icon": "",
+    "parameters": [
+      {
+        "name": "content",
+        "valueType": "string",
+        "required": true,
+        "hidden": false,
+        "overlay": false,
+        "defaultValue": "",
+        "displayName": null,
+        "system": false,
+        "config": {
+          "pickerConfiguration": "cms-pickers/documents-only",
+          "pickerInitialPath": "",
+          "pickerRememberLastVisited": true,
+          "pickerSelectableNodeTypes": [""],
+          "relative": true,
+          "pickerRootPath": null,
+          "type": "contentpath"
+        }
+      }
+    ],
+    "fieldGroups": [
+      {
+        "name": "Content",
+        "parameters": ["content"]
+      }
+
+    ]
+}
+  

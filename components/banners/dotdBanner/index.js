@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+// utils
+import { getSavings } from '../../utils';
+
 // components
 import PromoIcon from './promoIcon';
 
@@ -38,20 +41,16 @@ const DotdBanner = ({
       if (roundelIncVatManual.length) {
         return parseFloat(roundelIncVatManual).toFixed(2).split('.');
       }
-
       if (product && product.price) {
         return parseFloat(product.price).toFixed(2).split('.');
       }
     }
-
     if (roundelExVatManual.length) {
       return parseFloat(roundelExVatManual).toFixed(2).split('.');
     }
-
     if (product && product.exvatprice) {
       return parseFloat(product.exvatprice).toFixed(2).split('.');
     }
-
     return ['00', '00'];
   };
 
@@ -124,7 +123,7 @@ const DotdBanner = ({
                 <sup className="pp__pnc">.{pence}</sup>
               </div>
 
-              {turnOffWasPrice !== 'true' && (
+              {!turnOffWasPrice && (
                 <div className="pp__bmsg">
                   Was £
                   {incVat
