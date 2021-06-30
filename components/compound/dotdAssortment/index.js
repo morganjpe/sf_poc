@@ -19,11 +19,11 @@ const DotdAssortment = ({ component, page }) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (asstRef && asstRef.current) {
-        setHeight(asstRef.current.clientHeight);
+        setHeight(asstRef.current.clientHeight - 10);
       }
       window.addEventListener('resize', () => {
         if (asstRef && asstRef.current) {
-          setHeight(asstRef.current.clientHeight);
+          setHeight(asstRef.current.clientHeight - 10);
         }
       });
     }
@@ -81,13 +81,20 @@ const DotdAssortment = ({ component, page }) => {
 
         <div
           ref={asstRef}
+          style={{ display: 'flex', flexWrap: 'wrap' }}
           className="homepage_assortment lg-15 md-24 sm-24 tiles equal"
         >
           {params &&
             assortment(params).map((key) => {
               const { id, ...rest } = page.getContent(key).getData();
               return (
-                <div key={id} className="lg-8 md-8 sm-12 cols">
+                <div
+                  key={id}
+                  style={{
+                    marginBottom: 10,
+                  }}
+                  className="lg-8 md-8 sm-12 cols"
+                >
                   <BrManageContentButton
                     content={page.getContent(key)}
                     documentTemplateQuery="CategoryBlock"

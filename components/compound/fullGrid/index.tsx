@@ -6,6 +6,7 @@ import { BrProps } from '@bloomreach/react-sdk';
 import ProductGallery from '../../cards/product';
 import TextContent from '../../textContent';
 import ImageBanner from '../../banners/imageBanner';
+import { CategoryCollection } from '../../cards/category';
 
 // utils
 import { getProductGalleryData } from '../utils';
@@ -50,6 +51,24 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
           altTagDescription={data.altTagDescription}
           fixedHeight={data.fixedHeight}
         />
+      </div>
+    );
+  }
+
+  if (data?.contentType === 'brxsaas:CategoryBlockGroup') {
+    return (
+      <div className="row">
+        <div
+          style={{ display: 'flex', flexWrap: 'wrap' }}
+          className="row-wrp--mod"
+        >
+          <CategoryCollection
+            page={page}
+            pageRef={content}
+            // component={page.getComponent(content)}
+            // page={page}
+          />
+        </div>
       </div>
     );
   }
