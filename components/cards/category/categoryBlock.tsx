@@ -10,7 +10,7 @@ interface CategoryBlockProps {
   textColor: string;
   categoryText: string;
   destinationUrl: string;
-  children: React.ReactNode;
+  // children: React.ReactNode;
 }
 
 const CategoryBlock = ({
@@ -22,8 +22,8 @@ const CategoryBlock = ({
   textColor,
   categoryText,
   destinationUrl,
-  children,
-}: CategoryBlockProps): JSX.Element => (
+}: // children,
+CategoryBlockProps): JSX.Element => (
   <div
     className="mt__item"
     style={{

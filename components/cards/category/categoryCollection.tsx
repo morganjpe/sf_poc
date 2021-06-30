@@ -1,4 +1,3 @@
-import { portal } from 'react';
 import { BrManageContentButton } from '@bloomreach/react-sdk';
 import { Page } from '@bloomreach/spa-sdk';
 import styled from 'styled-components';
