@@ -7,6 +7,7 @@ import ProductGallery from '../../cards/product';
 import TextContent from '../../textContent';
 import ImageBanner from '../../banners/imageBanner';
 import { CategoryCollection } from '../../cards/category';
+import Accordion from '../../accordion';
 
 // utils
 import { getProductGalleryData } from '../utils';
@@ -19,8 +20,6 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
   }
 
   const data = page.getContent(content)?.getData();
-
-  console.log(data);
 
   if (data?.contentType === 'brxsaas:ProductGallery') {
     return (
@@ -69,6 +68,14 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
             // page={page}
           />
         </div>
+      </div>
+    );
+  }
+
+  if (data?.contentType === 'brxsaas:AccordionGroup') {
+    return (
+      <div className="">
+        <Accordion page={page} pageRef={content} />
       </div>
     );
   }
