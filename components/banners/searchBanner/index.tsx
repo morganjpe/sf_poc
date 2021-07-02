@@ -19,7 +19,6 @@ interface SearchBannerProps {
   desktopImage: string;
   backgroundImage: string;
   altTagDescription: string;
-  [name: string]: string;
 }
 
 const SearchBanner = ({
@@ -31,14 +30,11 @@ const SearchBanner = ({
   altTagDescription,
   ...rest
 }: SearchBannerProps): JSX.Element => {
-  const links = [...Array(6)].map((_, i) => {
-    const name = rest[`link${i + 1}Name`];
-    const destination = rest[`link${i + 1}DestinationUrl`];
-    return {
-      name,
-      destination,
-    };
-  });
+  const values: { [name: string]: string } = { ...rest };
+  const links = [...Array(6)].map((_, i) => ({
+    name: values[`link${i + 1}Name`],
+    destination: values[`link${i + 1}DestinationUrl`],
+  }));
 
   return (
     <div className="banner banner--border banner--var5 banner--level3">
