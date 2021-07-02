@@ -1,10 +1,15 @@
 import axios from 'axios';
-import { BrComponent, BrPage } from '@bloomreach/react-sdk';
-import { initialize, TYPE_CONTAINER_ITEM_UNDEFINED } from '@bloomreach/spa-sdk';
 
-// import { CertonaCollection } from '../cards/certona';
-// import { CategoryCollection } from '../cards/category';
-// import BrandCarousel from '../carousel/brand';
+import { NextPageContext } from 'next';
+
+import { BrComponent, BrPage } from '@bloomreach/react-sdk';
+
+import {
+  initialize,
+  Page,
+  TYPE_CONTAINER_ITEM_UNDEFINED,
+} from '@bloomreach/spa-sdk';
+
 import HTMLContent from '../custom';
 import DotdAssortment from '../compound/dotdAssortment';
 import HalfGrid from '../compound/halfGrid';
@@ -16,10 +21,19 @@ import Header from '../layout/header';
 import Fuds from '../layout/fuds';
 import Footer from '../layout/footer';
 
+export interface Configuration {
+  endpoint: string | undefined;
+  endpointQueryParameter: string;
+  request: { path: string };
+}
+
+interface CmsPageProps {
+  configuration: Configuration;
+  page: Page;
+  children?: React.ReactNode;
+}
+
 const mapping = {
-  // certonaGroup: CertonaCollection,
-  // BrandSlider: BrandCarousel,
-  // CategoryBlockCollection: CategoryCollection,
   HTMLComponent: HTMLContent,
   DotdAssortment,
   HalfGrid,
@@ -27,16 +41,25 @@ const mapping = {
   [TYPE_CONTAINER_ITEM_UNDEFINED]: Fallback,
 };
 
-export const Page = ({ configuration, page, children, hasMainContent }) => (
-  <BrPage configuration={{ ...configuration }} page={page} mapping={mapping}>
+const CmsPage = ({
+  configuration,
+  page,
+  children,
+}: CmsPageProps): JSX.Element => (
+  <BrPage
+    configuration={{ ...configuration, httpClient: axios }}
+    page={page}
+    mapping={mapping}
+  >
     <BrComponent path="menu">
       <Header />
     </BrComponent>
     <Fuds />
     <div id="container-main" className="wrp">
       <div className="inner">
-        {hasMainContent && <BrComponent path="main" />}
         {children}
+        <BrComponent path="main" />
+        <BrComponent path="right" />
       </div>
     </div>
     <BrComponent path="footer">
@@ -45,10 +68,20 @@ export const Page = ({ configuration, page, children, hasMainContent }) => (
   </BrPage>
 );
 
-export const bloomreachProps = async (context) => {
+CmsPage.defaultProps = {
+  children: <></>,
+};
+
+export default CmsPage;
+
+export const bloomreachProps = async (
+  context: NextPageContext
+): Promise<{
+  configuration: Configuration;
+  page: Page;
+}> => {
   const configuration = {
-    endpoint:
-      'https://screwfix.bloomreach.io/delivery/site/v1/channels/brxsaas/pages',
+    endpoint: process.env.PAGES_ENDPOINT,
     endpointQueryParameter: 'endpoint',
     request: { path: context.asPath || '' },
   };
@@ -59,10 +92,6 @@ export const bloomreachProps = async (context) => {
     request: {
       ...configuration.request,
     },
-    connection: context.req?.connection,
-    headers: context.req?.headers['x-forwarded-for']
-      ? { 'x-forwarded-for': context.req?.headers['x-forwarded-for'] }
-      : undefined,
   });
 
   return {

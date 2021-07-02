@@ -8,6 +8,7 @@ import TextContent from '../../textContent';
 import ImageBanner from '../../banners/imageBanner';
 import { CategoryCollection } from '../../cards/category';
 import Accordion from '../../accordion';
+import BannerViewAll from '../../banners/bannerViewAll';
 
 // utils
 import { getProductGalleryData } from '../utils';
@@ -87,6 +88,22 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
       </div>
     );
   }
+
+  if (data?.contentType === 'brxsaas:BannerViewAll') {
+    const { destinationUrl, dealText } = data;
+
+    return (
+      <div className="row">
+        <BannerViewAll
+          content={page.getContent(content)}
+          destinationUrl={destinationUrl}
+          dealText={dealText}
+        />
+      </div>
+    );
+  }
+
+  console.log(data?.contentType);
 
   return <div>invalid document type</div>;
 };

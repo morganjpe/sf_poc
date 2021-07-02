@@ -7,11 +7,15 @@ export const getProductGalleryData = (ref: string, page: Page): any => {
     const data = content.getData();
 
     return [...Array(3)].map((_, index) => {
-      const docRef = data[`product${index + 1}`].$ref;
-      return {
-        ...page.getContent(docRef)?.getData(),
-        docRef,
-      };
+      const doc = data[`product${index + 1}`];
+      if (doc) {
+        return {
+          ...page.getContent(doc.$ref)?.getData(),
+          docRef: doc.$ref,
+        };
+      }
+
+      return [];
     });
   }
 

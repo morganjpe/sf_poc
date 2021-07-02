@@ -8,6 +8,9 @@ import ProductGallery from '../../cards/product';
 const HalfGrid = ({ component, page }: BrProps): JSX.Element => {
   const { left } = component.getParameters();
 
+  //   component.getModels();
+  //   page.getDocument();
+
   return (
     <div className={page.isPreview() ? 'has-edit-button row' : 'row'}>
       <div className="row-wrp--mod">

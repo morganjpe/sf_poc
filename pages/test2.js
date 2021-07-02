@@ -1,12 +1,15 @@
 import axios from 'axios';
-import { Page, bloomreachProps } from '../components/cms/page';
+import CmsPage, { bloomreachProps } from '../components/cms/page';
 
-const Test = ({ configuration, page }) => (
-  <Page
-    hasMainContent
-    page={page}
-    configuration={{ ...configuration, httpClient: axios }}
-  />
+const Test = ({ configuration, page, pageModel }) => (
+  <>
+    {console.log(pageModel, '????')}
+    <CmsPage
+      hasMainContent
+      page={page}
+      configuration={{ ...configuration, httpClient: axios }}
+    />
+  </>
 );
 
 export default Test;

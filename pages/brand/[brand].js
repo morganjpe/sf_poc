@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { Page, bloomreachProps } from '../../components/cms/page';
+import CmsPage, { bloomreachProps } from '../../components/cms/page';
 
 const Brand = ({ configuration, page }) => {
   console.log(configuration, page);
   return (
-    <Page
+    <CmsPage
       hasMainContent
       page={page}
       configuration={{ ...configuration, httpClient: axios }}

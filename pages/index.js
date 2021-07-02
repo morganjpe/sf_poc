@@ -1,10 +1,12 @@
 import axios from 'axios';
-import { Page, bloomreachProps } from '../components/cms/page';
+import CmsPage, { bloomreachProps } from '../components/cms/page';
 
-const Home = ({ configuration, page }) => (
-  <Page page={page} configuration={{ ...configuration, httpClient: axios }}>
+const Home = ({ configuration, page, document }) => (
+  <CmsPage page={page} configuration={{ ...configuration, httpClient: axios }}>
+    {console.log(document, '???')}
+
     <h2>Main page content goes here</h2>
-  </Page>
+  </CmsPage>
 );
 
 export default Home;
