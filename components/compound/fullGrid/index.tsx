@@ -91,7 +91,6 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
 
   if (data?.contentType === 'brxsaas:BannerViewAll') {
     const { destinationUrl, dealText } = data;
-
     return (
       <div className="row">
         <BannerViewAll
@@ -103,7 +102,11 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
     );
   }
 
-  console.log(data?.contentType);
+  // if(data?.contentType === 'brxsaas:') {
+
+  // }
+
+  // console.log(data?.contentType);
 
   return <div>invalid document type</div>;
 };

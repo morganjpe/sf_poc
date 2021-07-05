@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { NextPageContext } from 'next';
 
-import { BrComponent, BrPage } from '@bloomreach/react-sdk';
+import { BrComponent, BrPageContext, BrPage } from '@bloomreach/react-sdk';
 
 import {
   initialize,
@@ -55,6 +55,7 @@ const CmsPage = ({
       <Header />
     </BrComponent>
     <Fuds />
+
     <div id="container-main" className="wrp">
       <div className="inner">
         {children}
@@ -81,7 +82,9 @@ export const bloomreachProps = async (
   page: Page;
 }> => {
   const configuration = {
-    endpoint: process.env.PAGES_ENDPOINT,
+    endpoint:
+      process.env.PAGES_ENDPOINT ||
+      'https://screwfix.bloomreach.io/delivery/site/v1/channels/brxsaas/pages',
     endpointQueryParameter: 'endpoint',
     request: { path: context.asPath || '' },
   };
