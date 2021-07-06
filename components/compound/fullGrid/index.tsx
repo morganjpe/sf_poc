@@ -102,15 +102,13 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
     );
   }
 
+  console.log(data);
+
   // if(data?.contentType === 'brxsaas:') {
 
   // }
 
-  // console.log(data?.contentType);
-
   return <div>invalid document type</div>;
 };
-
-/// "brxsaas:BannerImage"
 
 export default FullGrid;
