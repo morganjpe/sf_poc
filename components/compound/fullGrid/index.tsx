@@ -40,7 +40,7 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
     return (
       <div className="row" style={{ position: 'relative' }}>
         <ImageBanner
-          pageRef={content}
+          // pageRef={content}
           page={page}
           h1={data.h1}
           hoverOverText={data.hoverOverText}
@@ -62,12 +62,7 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
           style={{ display: 'flex', flexWrap: 'wrap' }}
           className="row-wrp--mod"
         >
-          <CategoryCollection
-            page={page}
-            pageRef={content}
-            // component={page.getComponent(content)}
-            // page={page}
-          />
+          <CategoryCollection page={page} pageRef={content} />
         </div>
       </div>
     );
@@ -102,11 +97,7 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
     );
   }
 
-  console.log(data);
-
-  // if(data?.contentType === 'brxsaas:') {
-
-  // }
+  console.log(data, '???');
 
   return <div>invalid document type</div>;
 };

@@ -1,22 +1,30 @@
-interface SelectionValues {
-  selectionValues: {
-    key: string;
-    label: string;
-  }[];
-}
+import { SelectionTypes, ResponsiveImage } from '../../types';
 
-export default interface heroBannerProps {
-  template: SelectionValues;
+export interface HeroBannerProps {
+  template: SelectionTypes;
   freeTypePoundInc: string;
   freeTypePoundEx: string;
   webIcon: string;
   sku: string;
-  skuDropdown: SelectionValues;
+  skuDropdown: SelectionTypes;
   freeType: string;
-  hoverOverText: string;
+  hoverOver: string;
   destinationUrl: string;
   altTagDescription: string;
-  images: [string, string, string];
+  responsiveImage: ResponsiveImage;
   hideBorder: boolean;
-  bannerType: SelectionValues;
+  bannerType: SelectionTypes;
+  backgroundImage: string;
+}
+
+export interface HeroBannerTypeProps
+  extends Omit<
+    HeroBannerProps,
+    'template' | 'skuDropdown' | 'bannerType' | 'responsiveImage'
+  > {
+  template: 'from' | 'save' | 'saveUpTo' | 'under'; // roundel?
+  skuDropdown: 'mainPrice' | 'savePercent' | 'savePound'; // required for sku
+  bannerType: 'chevronClear' | 'chevronRed' | 'topBar'; // complete
+  images: [string, string, string];
+  incVat: boolean;
 }

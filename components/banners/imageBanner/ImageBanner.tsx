@@ -8,7 +8,7 @@ import Styles from './ImageBanner.module.css';
 
 interface BannerImageProps {
   h1: string;
-  pageRef: string;
+  // pageRef: string;
   hoverOverText: string;
   destinationUrl: string;
   mobileImage: string;
@@ -29,8 +29,8 @@ const BannerImage = ({
   altTagDescription,
   fixedHeight,
   page,
-  pageRef,
-}: BannerImageProps): JSX.Element => (
+}: // pageRef,
+BannerImageProps): JSX.Element => (
   <div
     className={
       page.isPreview()
@@ -40,7 +40,7 @@ const BannerImage = ({
         : 'ib--border'
     }
   >
-    <BrManageContentButton content={page.getContent(pageRef)} />
+    {/* <BrManageContentButton content={page.getContent(pageRef)} /> */}
     <h1 className="ib-title">{h1}</h1>
 
     <div className={fixedHeight ? '' : 'ib'}>

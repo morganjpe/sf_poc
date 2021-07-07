@@ -1,6 +1,6 @@
 // types
-import heroBannerProps from './types';
+import { HeroBannerTypeProps } from './types';
 
-const HalfWidth = ({}: heroBannerProps): JSX.Element => <div>half</div>;
+const HalfWidth = ({}: HeroBannerTypeProps): JSX.Element => <div>half</div>;
 
 export default HalfWidth;

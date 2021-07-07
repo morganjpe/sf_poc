@@ -53,12 +53,20 @@ const queryString = (query: string) =>
   `https://int2.dev.screwfix.com/v2/api/products/SFUK/byIds?Persona=screwfix&Id=${query}`;
 
 const useProductApi = (
-  sku: string
+  sku: string | undefined
 ): {
   product: ProductAttributes | null;
   isLoading: boolean;
   isError: any;
 } => {
+  if (!sku) {
+    return {
+      product: null,
+      isLoading: false,
+      isError: 'no sku provided',
+    };
+  }
+
   const { data, error } = useSWR(sku, (prodSku) =>
     axios.get(queryString(prodSku))
   );
