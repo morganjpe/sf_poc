@@ -14,4 +14,4 @@ const Test = ({ configuration, page, pageModel }) => (
 
 export default Test;
 
-Test.getInitialProps = async (ctx) => bloomreachProps(ctx);
+export const getServerSideProps = async (ctx) => bloomreachProps(ctx);

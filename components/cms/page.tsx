@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-import { NextPageContext } from 'next';
+import { NextPageContext, GetServerSideProps } from 'next';
 
 import { BrComponent, BrPageContext, BrPage } from '@bloomreach/react-sdk';
+import { relevance } from '@bloomreach/spa-sdk/lib/express';
 
 import {
   initialize,
@@ -75,30 +76,25 @@ CmsPage.defaultProps = {
 
 export default CmsPage;
 
-export const bloomreachProps = async (
-  context: NextPageContext
-): Promise<{
-  configuration: Configuration;
-  page: Page;
-}> => {
+export const bloomreachProps: GetServerSideProps = async ({
+  req: request,
+  res: response,
+  resolvedUrl: path,
+}) => {
+  relevance(request, response);
+
   const configuration = {
+    path,
     endpoint:
-      process.env.PAGES_ENDPOINT ||
       'https://screwfix.bloomreach.io/delivery/site/v1/channels/brxsaas/pages',
     endpointQueryParameter: 'endpoint',
-    request: { path: context.asPath || '' },
   };
 
   const page = await initialize({
     ...configuration,
+    request,
     httpClient: axios,
-    request: {
-      ...configuration.request,
-    },
   });
 
-  return {
-    configuration,
-    page,
-  };
+  return { props: { configuration, page: page.toJSON() } };
 };

@@ -12,6 +12,6 @@ const Brand = ({ configuration, page }) => {
   );
 };
 
-Brand.getInitialProps = async (ctx) => bloomreachProps(ctx);
-
 export default Brand;
+
+export const getServerSideProps = async (ctx) => bloomreachProps(ctx);

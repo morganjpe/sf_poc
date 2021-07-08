@@ -9,4 +9,4 @@ const Search = ({ configuration, page }) => (
 
 export default Search;
 
-Search.getInitialProps = async (ctx) => bloomreachProps(ctx);
+export const getServerSideProps = async (ctx) => bloomreachProps(ctx);

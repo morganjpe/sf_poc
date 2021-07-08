@@ -11,4 +11,4 @@ const Home = ({ configuration, page, document }) => (
 
 export default Home;
 
-Home.getInitialProps = async (ctx) => bloomreachProps(ctx);
+export const getServerSideProps = async (ctx) => bloomreachProps(ctx);

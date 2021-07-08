@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { NextPageContext } from 'next';
+import { GetServerSideProps } from 'next';
 
 import { Page, Document } from '@bloomreach/spa-sdk';
 
@@ -26,5 +26,5 @@ const TwoColumns = ({
 
 export default TwoColumns;
 
-TwoColumns.getInitialProps = async (ctx: NextPageContext) =>
+export const getServerSideProps: GetServerSideProps = async (ctx) =>
   bloomreachProps(ctx);
