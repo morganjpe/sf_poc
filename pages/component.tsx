@@ -1,6 +1,3 @@
-// import Accordion from '../components/accordion';
-// import SearchBanner from '../components/banners/searchBanner';
-
 import HeroBanner from '../components/banners/heroBanner';
 
 const data = {

@@ -418,17 +418,17 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bloomreach/react-sdk@^14.5.1":
-  version "14.5.1"
-  resolved "https://registry.yarnpkg.com/@bloomreach/react-sdk/-/react-sdk-14.5.1.tgz#68131f4ee937a844027deb2fccef1175830bda39"
-  integrity sha512-D0MEo4QyhE0lXXc8LJzV6aDnWrSEnuogbx61oX//1CQdaVW38nlCTvAglNhhqkbfCGHA4dvoFBlMkpPW3LeLFw==
+"@bloomreach/react-sdk@0.3.1-saas":
+  version "0.3.1-saas"
+  resolved "https://registry.yarnpkg.com/@bloomreach/react-sdk/-/react-sdk-0.3.1-saas.tgz#6b3f72852c0ed867c9fb3a70282810eb45c6a4c2"
+  integrity sha512-9TOVd42bZxuUX2fbpctYEqsBwbKDeycuRP5IHjtJGzuG3GFiJMC2V0Bq8YayO+b2iCAYGv0KydFnvb5hzEOF0g==
   dependencies:
-    "@bloomreach/spa-sdk" "^14.5.1"
+    "@bloomreach/spa-sdk" "^0.3.1-saas"
 
-"@bloomreach/spa-sdk@^14.5.1":
-  version "14.5.1"
-  resolved "https://registry.yarnpkg.com/@bloomreach/spa-sdk/-/spa-sdk-14.5.1.tgz#1837adf9ce159b914111151190ec737fd5ab853e"
-  integrity sha512-ZVkYrdoVs++NFQQsRTmDE2ThBvEhBM2N/jIHfHYRzULeZp6jIGA2UQUoaAv9jPObRqtKVp9czPsgQqOVx1DzHQ==
+"@bloomreach/spa-sdk@0.3.1-saas", "@bloomreach/spa-sdk@^0.3.1-saas":
+  version "0.3.1-saas"
+  resolved "https://registry.yarnpkg.com/@bloomreach/spa-sdk/-/spa-sdk-0.3.1-saas.tgz#36bd10b77eee4aa6a622c21696f191dd49ff961c"
+  integrity sha512-H/2/yn9SHba1BiZbgAbGZ472VKC9YnPy5mOClrt8/1BTspHuPC3NSgRITzd9vFTVP215EJ8SEtyhJIcn3h9BMA==
   dependencies:
     cookie "^0.4"
     emittery "^0.7"

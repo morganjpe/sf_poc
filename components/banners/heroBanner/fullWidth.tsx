@@ -2,12 +2,8 @@ import { useEffect, useState } from 'react';
 
 // hooks
 import useProductApi from '../../useProductApi';
-import { useVat } from '../../../state/vat';
-
 // types
 import { HeroBannerTypeProps } from './types';
-
-// style="background: url(https://screwfix.scene7.com/is/image/ae235?layer=0&amp;fmt=jpg&amp;op_sharpen=1&amp;scl=1&amp;src=ae235/ShowersBGD) no-repeat"
 
 import ResponsiveImage from '../../responsiveImage';
 
@@ -24,10 +20,6 @@ const getBannerVariant = (type: 'chevronClear' | 'chevronRed' | 'topBar') => {
   }
 };
 
-const getFreeTypePrice = () => {
-  /** */
-};
-
 const fullWidth = ({
   incVat,
   destinationUrl,
@@ -38,6 +30,7 @@ const fullWidth = ({
   backgroundImage,
   freeType,
   sku,
+  skuDropdown,
   // override props
   freeTypePoundInc,
   freeTypePoundEx,
@@ -48,36 +41,14 @@ const fullWidth = ({
   const [[pound, pence], setPrice] = useState<[string, string]>(['00', '00']);
 
   useEffect(() => {
-    // have no errors and not loading
-    if (!isError && !isLoading) {
-      // incVat
-      if (incVat) {
-        if (freeTypePoundInc) {
-          const [one, two] = freeTypePoundInc.split('.');
-          setPrice([one, two]);
-        } else if (product && product.price) {
-          const [one, two] = product?.price.toString().split('.');
-          setPrice([one, two]);
-        }
-      }
-      // exvat
-      if (!incVat) {
-        if (freeTypePoundEx) {
-          const [one, two] = freeTypePoundInc.split('.');
-          setPrice([one, two]);
-        } else if (product && product.exVatPrice) {
-          const [one, two] = product?.exVatPrice.toString().split('.');
-          setPrice([one, two]);
-        }
-      }
-    } else if (incVat) {
+    if (incVat) {
       const [one, two] = freeTypePoundInc.split('.');
       setPrice([one, two]);
     } else {
       const [one, two] = freeTypePoundEx.split('.');
       setPrice([one, two]);
     }
-  }, [product, isError, incVat, freeTypePoundInc, freeTypePoundEx, setPrice]);
+  }, [incVat]);
 
   const freeTypeContent = freeType
     .replace(/<p>/g, '<span>')
@@ -109,6 +80,7 @@ const fullWidth = ({
                 )}
 
                 <span className="banner__deal-value">
+                  {skuDropdown}
                   <sup>£</sup>
                   {pound}
                   <sup>.{pence}</sup>
