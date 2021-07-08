@@ -19,6 +19,7 @@ export interface HeroBannerProps {
   backgroundImage: string;
   hideWasPrice: boolean;
   pricePoint: SelectionTypes;
+  halfWidth: boolean;
 }
 
 export interface HeroBannerTypeProps

@@ -1,7 +1,6 @@
 import { useVat } from '../../../state/vat';
 
-import FullWidthBanner from './fullWidth';
-import HalfWidthBanner from './halfWidth';
+import Banner from './banner';
 
 // types
 import { HeroBannerProps, HeroBannerTypeProps } from './types';
@@ -15,7 +14,6 @@ const getSelectionKey = (object: SelectionTypes) =>
   object.selectionValues[0].key;
 
 const HeroBanner = ({
-  halfWidth = false,
   responsiveImage,
   template,
   skuInfoDropdown,
@@ -43,15 +41,7 @@ const HeroBanner = ({
     incVat,
   } as HeroBannerTypeProps;
 
-  return (
-    <div>
-      {halfWidth ? (
-        <HalfWidthBanner {...props} />
-      ) : (
-        <FullWidthBanner {...props} template="under" />
-      )}
-    </div>
-  );
+  return <Banner {...props} />;
 };
 
 export default HeroBanner;

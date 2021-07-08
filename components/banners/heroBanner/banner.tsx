@@ -55,6 +55,7 @@ const fullWidth = ({
   freeTypePercent,
   template,
   pricePoint,
+  halfWidth,
 }: HeroBannerTypeProps): JSX.Element => {
   const [product, setProduct] = useState<ProductState>({
     data: {
@@ -125,7 +126,9 @@ const fullWidth = ({
     <div className="tmshp_carousel">
       <a
         href={destinationUrl}
-        className={`banner banner--var${getBannerVariant(bannerType)} ${
+        className={`banner ${
+          halfWidth ? 'banner--half' : ''
+        } banner--var${getBannerVariant(bannerType)} ${
           !hideBorder ? 'banner--border' : ''
         }`}
         title={hoverOver}

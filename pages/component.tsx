@@ -68,7 +68,19 @@ const Component = (): JSX.Element => (
       </div>
       <div className="row">
         <div className="lg-12 md-24 sm-24 cols">
-          <HeroBanner {...data} halfWidth />
+          <HeroBanner
+            {...data}
+            halfWidth
+            bannerType={{
+              selectionValues: [
+                {
+                  key: 'chevronRed',
+                  label: 'chevronRed',
+                },
+              ],
+            }}
+          />
+          {/* <HeroBanner {...data} halfWidth /> */}
         </div>
       </div>
     </div>
