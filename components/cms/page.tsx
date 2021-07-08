@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { NextPageContext, GetServerSideProps } from 'next';
+import { GetServerSideProps } from 'next';
 
-import { BrComponent, BrPageContext, BrPage } from '@bloomreach/react-sdk';
+import { BrComponent, BrPage } from '@bloomreach/react-sdk';
 import { relevance } from '@bloomreach/spa-sdk/lib/express';
 
 import {

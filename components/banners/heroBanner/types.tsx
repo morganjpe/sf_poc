@@ -1,4 +1,4 @@
-import { SelectionTypes, ResponsiveImage } from '../../types';
+import { SelectionTypes, ResponsiveImage, ImagePosition } from '../../types';
 
 export interface HeroBannerProps {
   template: SelectionTypes;
@@ -20,6 +20,7 @@ export interface HeroBannerProps {
   hideWasPrice: boolean;
   pricePoint: SelectionTypes;
   halfWidth: boolean;
+  imagePosition: ImagePosition;
 }
 
 export interface HeroBannerTypeProps

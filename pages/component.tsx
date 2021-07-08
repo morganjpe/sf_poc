@@ -58,6 +58,20 @@ const data = {
       },
     ],
   },
+  imagePosition: {
+    mobile: {
+      x: 0,
+      y: 0,
+    },
+    tablet: {
+      x: 0,
+      y: 0,
+    },
+    desktop: {
+      x: -50,
+      y: 10,
+    },
+  },
 };
 
 const Component = (): JSX.Element => (
@@ -71,6 +85,7 @@ const Component = (): JSX.Element => (
           <HeroBanner
             {...data}
             halfWidth
+            backgroundImage=""
             bannerType={{
               selectionValues: [
                 {
@@ -80,7 +95,6 @@ const Component = (): JSX.Element => (
               ],
             }}
           />
-          {/* <HeroBanner {...data} halfWidth /> */}
         </div>
       </div>
     </div>

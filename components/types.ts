@@ -10,3 +10,18 @@ export interface ResponsiveImage {
   mobileImage: string;
   tabletImage: string;
 }
+
+export interface ImagePosition {
+  mobile: {
+    x: number;
+    y: number;
+  };
+  tablet: {
+    x: number;
+    y: number;
+  };
+  desktop: {
+    x: number;
+    y: number;
+  };
+}

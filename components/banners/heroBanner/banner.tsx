@@ -5,10 +5,14 @@ import axios from 'axios';
 // types
 import { HeroBannerTypeProps } from './types';
 import { ProductAttributes } from '../../useProductApi';
+import { ImagePosition } from '../../types';
 
 // components
 import ResponsiveImage from '../../responsiveImage';
 import BannerTitle from './bannerTitle';
+
+// hooks
+import useResponsiveBreakpoint from '../../useResponsiveBreakpoint';
 
 interface ProductState {
   data: {
@@ -35,6 +39,18 @@ const getBannerVariant = (type: 'chevronClear' | 'chevronRed' | 'topBar') => {
   }
 };
 
+const getImagePositions = (values: ImagePosition, breakpoint: number) => {
+  if (breakpoint === 0) {
+    return values.mobile;
+  }
+
+  if (breakpoint === 1) {
+    return values.tablet;
+  }
+
+  return values.desktop;
+};
+
 const fullWidth = ({
   incVat,
   destinationUrl,
@@ -56,7 +72,10 @@ const fullWidth = ({
   template,
   pricePoint,
   halfWidth,
+  imagePosition,
 }: HeroBannerTypeProps): JSX.Element => {
+  const breakpoint = useResponsiveBreakpoint();
+
   const [product, setProduct] = useState<ProductState>({
     data: {
       main: false,
@@ -65,6 +84,8 @@ const fullWidth = ({
     loading: false,
     error: false,
   });
+
+  const { x, y } = getImagePositions(imagePosition, breakpoint);
 
   const { main: mainData, roundel: roundelData } = product.data;
 
@@ -182,6 +203,9 @@ const fullWidth = ({
               images={images}
               alt={hoverOver}
               className="banner__img"
+              style={{
+                transform: `translate(${x}px, ${y}px)`,
+              }}
             />
           </div>
 
