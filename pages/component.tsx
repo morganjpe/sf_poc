@@ -2,16 +2,36 @@ import HeroBanner from '../components/banners/heroBanner';
 
 const data = {
   altTagDescription: 'alt tag description',
+  hideWasPrice: true,
   backgroundImage:
     'https://screwfix.scene7.com/is/image/ae235?layer=0&fmt=jpg&op_sharpen=1&scl=1&src=ae235/ShowersBGD',
   destinationUrl: '/',
   freeType:
     '<p>this is line one</p>\n\n<p>this is line two</p>\n\n<p>this is line three</p>',
-  freeTypePoundEx: '',
-  freeTypePoundInc: '',
-  hideBorder: true,
+  freeTypePoundEx: '12.80',
+  freeTypePoundInc: '12.80',
+  freeTypePercent: '70',
+  hideBorder: false,
   hoverOver: '',
-  sku: '91024',
+  pricePoint: {
+    selectionValues: [
+      {
+        key: 'fromOnly',
+        label: 'fromOnly',
+      },
+    ],
+  },
+  // left side detail sku
+  skuInfo: '524HF',
+  skuInfoDropdown: {
+    selectionValues: [
+      {
+        key: 'savePercent',
+        label: 'savePercent',
+      },
+    ],
+  },
+  skuRoundel: '91024',
   webIcon:
     'https://media.screwfix.com/is/image/ae235/Prices Locked_3?$miniIconProdTile$',
   responsiveImage: {
@@ -27,14 +47,6 @@ const data = {
       {
         key: 'chevronClear',
         label: 'chevronClear',
-      },
-    ],
-  },
-  skuDropdown: {
-    selectionValues: [
-      {
-        key: 'savePound',
-        label: 'savePound',
       },
     ],
   },

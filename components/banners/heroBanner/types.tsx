@@ -4,9 +4,11 @@ export interface HeroBannerProps {
   template: SelectionTypes;
   freeTypePoundInc: string;
   freeTypePoundEx: string;
+  freeTypePercent: string;
   webIcon: string;
-  sku: string;
-  skuDropdown: SelectionTypes;
+  skuInfo: string;
+  skuRoundel: string;
+  skuInfoDropdown: SelectionTypes;
   freeType: string;
   hoverOver: string;
   destinationUrl: string;
@@ -15,16 +17,23 @@ export interface HeroBannerProps {
   hideBorder: boolean;
   bannerType: SelectionTypes;
   backgroundImage: string;
+  hideWasPrice: boolean;
+  pricePoint: SelectionTypes;
 }
 
 export interface HeroBannerTypeProps
   extends Omit<
     HeroBannerProps,
-    'template' | 'skuDropdown' | 'bannerType' | 'responsiveImage'
+    | 'template'
+    | 'skuInfoDropdown'
+    | 'bannerType'
+    | 'responsiveImage'
+    | 'pricePoint'
   > {
   template: 'from' | 'save' | 'saveUpTo' | 'under'; // roundel?
-  skuDropdown: 'mainPrice' | 'savePercent' | 'savePound'; // required for sku
+  skuInfoDropdown: 'mainPrice' | 'savePercent' | 'savePound'; // required for sku
   bannerType: 'chevronClear' | 'chevronRed' | 'topBar'; // complete
   images: [string, string, string];
   incVat: boolean;
+  pricePoint: 'only' | 'fromOnly';
 }

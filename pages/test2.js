@@ -1,9 +1,8 @@
 import axios from 'axios';
 import CmsPage, { bloomreachProps } from '../components/cms/page';
 
-const Test = ({ configuration, page, pageModel }) => (
+const Test = ({ configuration, page }) => (
   <>
-    {console.log(pageModel, '????')}
     <CmsPage
       hasMainContent
       page={page}
@@ -13,5 +12,4 @@ const Test = ({ configuration, page, pageModel }) => (
 );
 
 export default Test;
-
 export const getServerSideProps = async (ctx) => bloomreachProps(ctx);

@@ -1,11 +1,26 @@
+/* eslint no-nested-ternary: "off" */
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-// hooks
-import useProductApi from '../../useProductApi';
 // types
 import { HeroBannerTypeProps } from './types';
+import { ProductAttributes } from '../../useProductApi';
 
+// components
 import ResponsiveImage from '../../responsiveImage';
+import BannerTitle from './bannerTitle';
+
+interface ProductState {
+  data: {
+    main: ProductAttributes | false;
+    roundel: ProductAttributes | false;
+  };
+  loading: boolean;
+  error: string | false;
+}
+
+const apiPath =
+  'https://int2.dev.screwfix.com/v2/api/products/SFUK/byIds?Persona=screwfix&Id=';
 
 const getBannerVariant = (type: 'chevronClear' | 'chevronRed' | 'topBar') => {
   switch (type) {
@@ -29,26 +44,78 @@ const fullWidth = ({
   bannerType,
   backgroundImage,
   freeType,
-  sku,
-  skuDropdown,
+  skuInfo,
+  skuInfoDropdown,
+  skuRoundel,
+  hideWasPrice,
+  hideBorder,
   // override props
   freeTypePoundInc,
   freeTypePoundEx,
+  freeTypePercent,
   template,
+  pricePoint,
 }: HeroBannerTypeProps): JSX.Element => {
-  const { product, isError, isLoading } = useProductApi(sku);
+  const [product, setProduct] = useState<ProductState>({
+    data: {
+      main: false,
+      roundel: false,
+    },
+    loading: false,
+    error: false,
+  });
 
-  const [[pound, pence], setPrice] = useState<[string, string]>(['00', '00']);
+  const { main: mainData, roundel: roundelData } = product.data;
+
+  const handleProductLoad = () =>
+    setProduct({
+      ...product,
+      loading: true,
+    });
+
+  const handleProductError = (error: string) =>
+    setProduct({
+      ...product,
+      loading: false,
+      error,
+    });
 
   useEffect(() => {
-    if (incVat) {
-      const [one, two] = freeTypePoundInc.split('.');
-      setPrice([one, two]);
-    } else {
-      const [one, two] = freeTypePoundEx.split('.');
-      setPrice([one, two]);
-    }
-  }, [incVat]);
+    (async () => {
+      if (skuInfo) {
+        try {
+          handleProductLoad();
+          const { data: response } = await axios.get(
+            `${apiPath}${skuInfo},${skuRoundel}`
+          );
+          const { data } = response;
+          // there are products
+          if (data.length) {
+            const main = data.filter(
+              ({ id }: { id: string }) => id === skuInfo
+            )[0].attributes;
+
+            const roundel = data.filter(
+              ({ id }: { id: string }) => id === skuRoundel
+            )[0].attributes;
+
+            setProduct({
+              loading: false,
+              error: false,
+              data: {
+                main,
+                roundel,
+              },
+            });
+          } else {
+            handleProductError('There has been an error');
+          }
+        } catch (error) {
+          handleProductError('There has been an error');
+        }
+      }
+    })();
+  }, []);
 
   const freeTypeContent = freeType
     .replace(/<p>/g, '<span>')
@@ -58,7 +125,9 @@ const fullWidth = ({
     <div className="tmshp_carousel">
       <a
         href={destinationUrl}
-        className={`banner banner--var${getBannerVariant(bannerType)}`}
+        className={`banner banner--var${getBannerVariant(bannerType)} ${
+          !hideBorder ? 'banner--border' : ''
+        }`}
         title={hoverOver}
       >
         <div
@@ -79,12 +148,25 @@ const fullWidth = ({
                   <span className="banner__deal-save">{template}</span>
                 )}
 
-                <span className="banner__deal-value">
-                  {skuDropdown}
-                  <sup>£</sup>
-                  {pound}
-                  <sup>.{pence}</sup>
-                </span>
+                <BannerTitle
+                  type={skuInfoDropdown}
+                  skuPrice={
+                    mainData
+                      ? incVat
+                        ? mainData.price
+                        : mainData.exVatPrice
+                      : undefined
+                  }
+                  skuWasPrice={
+                    mainData
+                      ? incVat
+                        ? mainData.priceWas
+                        : mainData.priceWasExVat
+                      : undefined
+                  }
+                  freeTypePound={incVat ? freeTypePoundInc : freeTypePoundEx}
+                  freeTypePercent={freeTypePercent}
+                />
               </p>
               <p
                 className="banner__text"
@@ -102,22 +184,34 @@ const fullWidth = ({
 
           <img src={webIcon} className="banner__promo-icon" alt="" />
 
-          {product && (
+          {roundelData && (
             <div className="price-point pp--pound">
-              <div className="pp__tmsg">ONLY</div>
+              <div className="pp__tmsg">
+                {pricePoint === 'fromOnly' ? 'FROM ONLY' : 'ONLY'}
+              </div>
               <div className="pp__price">
                 <sup className="pp__pnd">£</sup>
                 <span className="pp_numbs">
-                  {pound}
+                  {incVat
+                    ? roundelData.price.toString().split('.')[0]
+                    : roundelData.exVatPrice.toString().split('.')[0]}
                   <span className="pp_vat">
                     {incVat ? 'INC VAT' : 'EX VAT'}
                   </span>
                 </span>
-                <sup className="pp__pnc">.{pence}</sup>
+                <sup className="pp__pnc">
+                  .
+                  {incVat
+                    ? roundelData.price.toString().split('.')[1]
+                    : roundelData.exVatPrice.toString().split('.')[1]}
+                </sup>
               </div>
-              <div className="pp__bmsg">
-                Was £{incVat ? product.priceWas : product.priceWasExVat}
-              </div>
+              {!hideWasPrice && (
+                <div className="pp__bmsg">
+                  Was £
+                  {incVat ? roundelData.priceWas : roundelData.priceWasExVat}
+                </div>
+              )}
             </div>
           )}
         </div>

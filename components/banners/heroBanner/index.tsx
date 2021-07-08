@@ -18,8 +18,9 @@ const HeroBanner = ({
   halfWidth = false,
   responsiveImage,
   template,
-  skuDropdown,
+  skuInfoDropdown,
   bannerType,
+  pricePoint,
   ...rest
 }: HeroBannerPropsGroup): JSX.Element => {
   const { incVat } = useVat();
@@ -36,8 +37,9 @@ const HeroBanner = ({
     ...rest,
     images,
     template: getSelectionKey(template),
-    skuDropdown: getSelectionKey(skuDropdown),
+    skuInfoDropdown: getSelectionKey(skuInfoDropdown),
     bannerType: getSelectionKey(bannerType),
+    pricePoint: getSelectionKey(pricePoint),
     incVat,
   } as HeroBannerTypeProps;
 
