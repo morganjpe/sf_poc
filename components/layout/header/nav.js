@@ -8,6 +8,8 @@ import {
   BrPageContext,
 } from '@bloomreach/react-sdk';
 
+import Link from 'next/link';
+
 const Nav = ({ isResponsiveNav }) => {
   const [hovered, setIsHovered] = useState(false);
   // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -76,7 +78,13 @@ const Nav = ({ isResponsiveNav }) => {
                           </dt>
                           {levelTwo.getChildren().map((levelThree) => (
                             <dd key={levelThree.getName()}>
-                              <a href="/">{levelThree.getName()}</a>
+                              <Link
+                                href={
+                                  levelThree?.model?.links?.site?.href || ''
+                                }
+                              >
+                                <a>{levelThree.getName()}</a>
+                              </Link>
                             </dd>
                           ))}
                         </dl>
