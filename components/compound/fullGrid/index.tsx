@@ -41,7 +41,6 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
     return (
       <div className="row" style={{ position: 'relative' }}>
         <ImageBanner
-          // pageRef={content}
           page={page}
           h1={data.h1}
           hoverOverText={data.hoverOverText}
@@ -71,7 +70,7 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
 
   if (data?.contentType === 'brxsaas:AccordionGroup') {
     return (
-      <div className="">
+      <div>
         <Accordion page={page} pageRef={content} />
       </div>
     );
@@ -98,12 +97,26 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
     );
   }
 
-  console.log(data, '???');
-
   if (data?.contentType === 'brxsaas:BannerFullWidth') {
+    const {
+      internalUrl: { $ref: pageRef },
+      externalUrl,
+      responsiveImage: { desktopImage, tabletImage, mobileImage },
+      isFullWidth,
+    } = data;
+
+    let url = externalUrl;
+    if (pageRef.length) {
+      url = page.getContent(pageRef)?.getUrl();
+    }
+
     return (
       <div className="row">
-        <FullWidthBanner url="/" images={['', '', '']} isFullWidth />
+        <FullWidthBanner
+          url={url}
+          images={[mobileImage, tabletImage, desktopImage]}
+          isFullWidth={isFullWidth}
+        />
       </div>
     );
   }

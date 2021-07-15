@@ -1,3 +1,4 @@
+import { Page, TYPE_CONTAINER_ITEM_UNDEFINED } from '@bloomreach/spa-sdk';
 import { BrComponent } from '@bloomreach/react-sdk';
 
 const cmsPage = ({ children }: { children: React.ReactNode }): JSX.Element => (

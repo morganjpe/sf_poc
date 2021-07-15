@@ -1,5 +1,5 @@
 import CmsPage from '../components/cms/page';
 
-const Test = ({ page }) => <CmsPage />;
+const Test = () => <CmsPage>test two</CmsPage>;
 
 export default Test;

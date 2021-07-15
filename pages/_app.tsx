@@ -5,12 +5,6 @@ import { AppProps, AppContext } from 'next/app';
 
 import { initialize, TYPE_CONTAINER_ITEM_UNDEFINED } from '@bloomreach/spa-sdk';
 
-import DotdAssortment from 'components/compound/dotdAssortment';
-import HTMLContent from 'components/custom';
-import HalfGrid from 'components/compound/halfGrid';
-import FullGrid from 'components/compound/fullGrid';
-// fallback
-
 import Header from 'components/layout/header';
 import Fuds from 'components/layout/fuds';
 import Footer from 'components/layout/footer';
@@ -21,7 +15,20 @@ import '../styles/sfx.min.css';
 import '../styles/fuds.css';
 
 // state
+
+import DotdAssortment from 'components/compound/dotdAssortment';
+import HTMLContent from 'components/custom';
+import HalfGrid from 'components/compound/halfGrid';
+import FullGrid from 'components/compound/fullGrid';
 import VatProvider from '../state/vat';
+
+const mapping = {
+  HTMLComponent: HTMLContent,
+  DotdAssortment,
+  HalfGrid,
+  FullGrid,
+  [TYPE_CONTAINER_ITEM_UNDEFINED]: () => <div />,
+};
 
 interface MyAppProps {
   pageProps: {
@@ -30,45 +37,42 @@ interface MyAppProps {
   };
 }
 
-const Fallback = () => <div>component requires mapping</div>;
-
-const mapping = {
-  HTMLComponent: HTMLContent,
-  DotdAssortment,
-  HalfGrid,
-  FullGrid,
-  [TYPE_CONTAINER_ITEM_UNDEFINED]: Fallback,
-};
-
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   const { configuration, page } = pageProps;
 
+  const BrMapping = {
+    mapping,
+    page,
+    configuration: {
+      ...configuration,
+      httpClient: axios,
+    },
+  };
+
   return (
-    <BrPage
-      mapping={mapping}
-      configuration={{ ...configuration, httpClient: axios }}
-      page={page}
-    >
-      <VatProvider>
+    <VatProvider>
+      <BrPage {...BrMapping}>
         <BrComponent path="menu">
           <Header />
         </BrComponent>
+
         <Fuds />
-        <Component />
+        <Component {...pageProps} />
         <BrComponent path="footer">
           <Footer />
         </BrComponent>
-      </VatProvider>
-    </BrPage>
+      </BrPage>
+    </VatProvider>
   );
 };
 
 MyApp.getInitialProps = async ({ ctx }: AppContext): Promise<MyAppProps> => {
   const configuration = {
-    path: ctx.pathname,
+    path: `${ctx.asPath}`,
     endpoint:
       'https://screwfix.bloomreach.io/delivery/site/v1/channels/brxsaas/pages',
     endpointQueryParameter: 'endpoint',
+    // authorizationToken: ctx.query.token as string,
   };
 
   const page = await initialize({
