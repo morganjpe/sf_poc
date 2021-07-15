@@ -11,4 +11,8 @@ EXPOSE 3000/tcp
 RUN ["npm", "install",  "yarn", "-g", "-f"]
 RUN ["yarn"]
 RUN ["yarn", "build"]
-CMD ["yarn", "start"]
+CMD ["yarn", "debug"]
+
+# docker build -f dockerfile -t 122323/kingfisher:latest .
+# docker push 122323/kingfisher:latest
+# docker run -p 3000:3000 122323/kingfisher:latest

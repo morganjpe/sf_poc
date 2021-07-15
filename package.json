@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "debug": "cross-env NODE_ENV=production node debug.js",
     "start": "next start -p 3000",
     "test": "jest --watch"
   },
@@ -16,6 +17,7 @@
     "@types/styled-components": "^5.1.10",
     "@zeit/next-typescript": "^1.1.1",
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
     "dompurify": "^2.2.9",
     "next": "10.2.0",
     "react": "17.0.2",
