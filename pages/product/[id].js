@@ -15,7 +15,7 @@ const Product = (props) => {
 
 export default Product;
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const {
     query: { id },
   } = context;

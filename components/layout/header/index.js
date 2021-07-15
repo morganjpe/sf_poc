@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 // components
 import Brand from './brand';
@@ -20,4 +20,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

@@ -12,7 +12,6 @@ import Link from 'next/link';
 
 const Nav = ({ isResponsiveNav }) => {
   const [hovered, setIsHovered] = useState(false);
-  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   // bloomreach content
   const component = useContext(BrComponentContext);
@@ -24,10 +23,6 @@ const Nav = ({ isResponsiveNav }) => {
     onMouseOver: () => setIsHovered(true),
     onMouseLeave: () => setIsHovered(false),
   };
-
-  // useEffect(() => {
-  //   window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
-  // });
 
   return (
     <>
@@ -83,7 +78,7 @@ const Nav = ({ isResponsiveNav }) => {
                                   levelThree?.model?.links?.site?.href || ''
                                 }
                               >
-                                <a>{levelThree.getName()}</a>
+                                {levelThree.getName()}
                               </Link>
                             </dd>
                           ))}

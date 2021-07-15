@@ -1,20 +1,16 @@
+import Banner from './banner';
+
+import type { ResponsiveImage } from '../../types';
+
+interface FullWidthBannerProps {
+  responsiveImage: ResponsiveImage;
+  externalUrl: string;
+  internalUrl: string;
+}
+
 const FullWidthBanner = () => (
-  <div className="full_width_banner paint-dec-deals">
-    <div className="full_width_wrp">
-      <div className="full_width_banner">
-        <div className="header-container">
-          <div className="flex-container">
-            <h1>
-              PAINTING &amp
-              <span>
-                DECORATING DEALS
-                <span />
-              </span>
-            </h1>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div>
+    <Banner />
   </div>
 );
 

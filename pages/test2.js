@@ -1,15 +1,5 @@
-import axios from 'axios';
-import CmsPage, { bloomreachProps } from '../components/cms/page';
+import CmsPage from '../components/cms/page';
 
-const Test = ({ configuration, page }) => (
-  <>
-    <CmsPage
-      hasMainContent
-      page={page}
-      configuration={{ ...configuration, httpClient: axios }}
-    />
-  </>
-);
+const Test = ({ page }) => <CmsPage />;
 
 export default Test;
-export const getServerSideProps = async (ctx) => bloomreachProps(ctx);

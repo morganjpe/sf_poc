@@ -1,30 +1,9 @@
-import axios from 'axios';
-import { GetServerSideProps } from 'next';
+import CmsPage from '../components/cms/page';
 
-import { Page, Document } from '@bloomreach/spa-sdk';
-
-import CmsPage, { bloomreachProps } from '../components/cms/page';
-
-interface TwoColumnsProps {
-  page: Page;
-  configuration: any;
-  document: Document;
-}
-
-const TwoColumns = ({
-  configuration,
-  page,
-  document,
-}: TwoColumnsProps): JSX.Element => (
+const TwoColumns = (): JSX.Element => (
   <>
-    <CmsPage
-      page={page}
-      configuration={{ ...configuration, httpClient: axios }}
-    />
+    <CmsPage>two column layout</CmsPage>
   </>
 );
 
 export default TwoColumns;
-
-export const getServerSideProps: GetServerSideProps = async (ctx) =>
-  bloomreachProps(ctx);

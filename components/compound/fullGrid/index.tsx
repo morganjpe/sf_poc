@@ -3,6 +3,7 @@
 import { BrProps } from '@bloomreach/react-sdk';
 
 // components
+import FullWidthBanner from 'components/banners/fullWidthBanner';
 import ProductGallery from '../../cards/product';
 import TextContent from '../../textContent';
 import ImageBanner from '../../banners/imageBanner';
@@ -98,6 +99,14 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
   }
 
   console.log(data, '???');
+
+  if (data?.contentType === 'brxsaas:BannerFullWidth') {
+    return (
+      <div className="row">
+        <FullWidthBanner url="/" images={['', '', '']} isFullWidth />
+      </div>
+    );
+  }
 
   return <div>invalid document type</div>;
 };
