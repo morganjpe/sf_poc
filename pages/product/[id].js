@@ -3,15 +3,11 @@ import axios from 'axios';
 // components
 import Breadcrumbs from '../../components/product/breadcrumbs';
 
-const Product = (props) => {
-  console.log(props);
-
-  return (
-    <div>
-      <Breadcrumbs />
-    </div>
-  );
-};
+const Product = (props) => (
+  <div>
+    <Breadcrumbs />
+  </div>
+);
 
 export default Product;
 

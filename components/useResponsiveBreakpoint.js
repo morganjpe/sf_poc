@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useWindowWidth } from '@react-hook/window-size';
 
 const getBreakpoint = (width) => {
   if (width <= 640) {
@@ -13,22 +14,14 @@ const getBreakpoint = (width) => {
 };
 
 const useResponsiveBreakpoint = () => {
-  const [breakpoint, setBreakpoint] = useState(
-    getBreakpoint(typeof window !== 'undefined' ? window.innerWidth : null)
-  );
-
-  //   console.log(breakpoint);
+  const width = useWindowWidth();
+  const [breakpoint, setBreakpoint] = useState(width);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setBreakpoint(getBreakpoint(window.innerWidth));
+    const breakpointIndex = getBreakpoint(width);
 
-      window.addEventListener('resize', () => {
-        const breakpointValue = getBreakpoint(window.innerWidth);
-        setBreakpoint(breakpointValue);
-      });
-    }
-  }, []);
+    setBreakpoint(breakpointIndex);
+  }, [width, setBreakpoint]);
 
   return breakpoint;
 };

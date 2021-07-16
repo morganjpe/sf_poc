@@ -34,7 +34,7 @@ const ProductGallery = ({
               ? 'lg-8 md-8 sm-24 cols has-edit-button'
               : 'lg-8 md-8 sm-24 cols'
           }
-          key={id}
+          key={`${id}_${Date.now()}`}
         >
           <BrManageContentButton content={page?.getContent(docRef)} />
           <Card

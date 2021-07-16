@@ -1,5 +1,3 @@
-import CmsPage from 'components/cms/page';
-
-const Brand = () => <CmsPage>Brand</CmsPage>;
+const Brand = () => <div>Brand</div>;
 
 export default Brand;

@@ -37,6 +37,8 @@ const FullWidthBanner = ({
 );
 
 FullWidthBanner.Container = styled.div`
+  cursor: pointer;
+
   .display-f-width {
     width: 100vw;
     position: relative;

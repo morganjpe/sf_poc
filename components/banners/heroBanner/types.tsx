@@ -12,6 +12,9 @@ export interface HeroBannerProps {
   freeType: string;
   hoverOver: string;
   destinationUrl: string;
+  internalUrl: {
+    $ref: string;
+  };
   altTagDescription: string;
   responsiveImage: ResponsiveImage;
   hideBorder: boolean;
@@ -21,6 +24,7 @@ export interface HeroBannerProps {
   pricePoint: SelectionTypes;
   halfWidth: boolean;
   imagePosition: ImagePosition;
+  content: any;
 }
 
 export interface HeroBannerTypeProps
@@ -31,6 +35,7 @@ export interface HeroBannerTypeProps
     | 'bannerType'
     | 'responsiveImage'
     | 'pricePoint'
+    | 'content'
   > {
   template: 'from' | 'save' | 'saveUpTo' | 'under'; // roundel?
   skuInfoDropdown: 'mainPrice' | 'savePercent' | 'savePound'; // required for sku
