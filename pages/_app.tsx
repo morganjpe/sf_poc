@@ -3,10 +3,14 @@ import { BrComponent, BrPage } from '@bloomreach/react-sdk';
 
 import { AppProps, AppContext } from 'next/app';
 
-import { initialize, TYPE_CONTAINER_ITEM_UNDEFINED } from '@bloomreach/spa-sdk';
+import {
+  initialize,
+  TYPE_CONTAINER_ITEM_UNDEFINED,
+  isPage,
+  isLink,
+} from '@bloomreach/spa-sdk';
 
 import Header from 'components/layout/header';
-import Fuds from 'components/layout/fuds';
 import Footer from 'components/layout/footer';
 
 // styles
@@ -32,13 +36,23 @@ const mapping = {
 
 interface MyAppProps {
   pageProps: {
-    configuration: { [name: string]: string };
-    page: Record<string, any>;
+    configuration: { [name: string]: string } | false;
+    page: Record<string, any> | false;
   };
 }
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   const { configuration, page } = pageProps;
+
+  if (!configuration) {
+    return (
+      <div id="container-main" className="wrp">
+        <div className="inner">
+          <Component {...pageProps} />
+        </div>
+      </div>
+    );
+  }
 
   const BrMapping = {
     mapping,
@@ -54,7 +68,6 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
       <BrPage {...BrMapping}>
         <BrComponent path="menu">
           <Header />
-          {/* <Fuds /> */}
         </BrComponent>
         <div id="container-main" className="wrp">
           <div className="inner">
@@ -78,26 +91,36 @@ MyApp.getInitialProps = async ({ ctx }: AppContext): Promise<MyAppProps> => {
   //   endpointQueryParameter: 'endpoint',
   // };
 
+  console.log(ctx.asPath);
+
   const configuration = {
     path: `${ctx.asPath}`,
     endpoint:
       'https://screwfix.bloomreach.io/delivery/site/v1/channels/brxsaas/pages',
     endpointQueryParameter: 'endpoint',
-    // authorizationToken: ctx.query.token as string,
   };
 
-  const page = await initialize({
-    ...configuration,
-    request: ctx.req,
-    httpClient: axios,
-  });
+  try {
+    const page = await initialize({
+      ...configuration,
+      request: ctx.req,
+      httpClient: axios,
+    });
 
-  return {
-    pageProps: {
-      configuration,
-      page: page.toJSON(),
-    },
-  };
+    return {
+      pageProps: {
+        configuration,
+        page: page.toJSON(),
+      },
+    };
+  } catch (error) {
+    return {
+      pageProps: {
+        configuration: false,
+        page: false,
+      },
+    };
+  }
 };
 
 export default MyApp;
