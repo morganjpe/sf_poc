@@ -1,3 +1,4 @@
+import { BrManageContentButton } from '@bloomreach/react-sdk';
 import { useVat } from '../../../state/vat';
 
 import Banner from './banner';
@@ -19,6 +20,7 @@ const HeroBanner = ({
   skuInfoDropdown,
   bannerType,
   pricePoint,
+  content,
   ...rest
 }: HeroBannerPropsGroup): JSX.Element => {
   const { incVat } = useVat();
@@ -41,7 +43,12 @@ const HeroBanner = ({
     incVat,
   } as HeroBannerTypeProps;
 
-  return <Banner {...props} />;
+  return (
+    <div style={{ position: 'relative' }}>
+      <BrManageContentButton content={content} />
+      <Banner {...props} />
+    </div>
+  );
 };
 
 export default HeroBanner;

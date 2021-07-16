@@ -14,7 +14,7 @@ const BannerViewAll = ({
   content,
 }: BannerViewAllProps): JSX.Element => (
   <>
-    {/* <BrManageContentButton content={content} /> \\ for you to take a look Ian */}
+    <BrManageContentButton content={content} />
     <BannerViewAll.Container className="view-all-html landingpage_viewall">
       <a href={destinationUrl} title={`View All ${dealText} Deals`}>
         <p>

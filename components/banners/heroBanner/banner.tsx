@@ -1,6 +1,7 @@
 /* eslint no-nested-ternary: "off" */
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 // types
 import { HeroBannerTypeProps } from './types';
@@ -104,29 +105,36 @@ const fullWidth = ({
 
   useEffect(() => {
     (async () => {
-      if (skuInfo) {
+      if (skuInfo || skuRoundel) {
         try {
           handleProductLoad();
           const { data: response } = await axios.get(
             `${apiPath}${skuInfo},${skuRoundel}`
           );
           const { data } = response;
+
           // there are products
           if (data.length) {
-            const main = data.filter(
-              ({ id }: { id: string }) => id === skuInfo
-            )[0].attributes;
+            let main: ProductAttributes | false = false;
+            let roundel: ProductAttributes | false = false;
 
-            const roundel = data.filter(
-              ({ id }: { id: string }) => id === skuRoundel
-            )[0].attributes;
+            if (skuInfo) {
+              main = data.filter(({ id }: { id: string }) => id === skuInfo)[0]
+                .attributes;
+            }
+
+            if (skuRoundel) {
+              roundel = data.filter(
+                ({ id }: { id: string }) => id === skuRoundel
+              )[0].attributes;
+            }
 
             setProduct({
               loading: false,
               error: false,
               data: {
-                main,
                 roundel,
+                main,
               },
             });
           } else {
@@ -144,106 +152,107 @@ const fullWidth = ({
     .replace(/<\/p>/g, '</span>');
 
   return (
-    <div className="tmshp_carousel">
-      <a
-        href={destinationUrl}
-        className={`banner ${
-          halfWidth ? 'banner--half' : ''
-        } banner--var${getBannerVariant(bannerType)} ${
-          !hideBorder ? 'banner--border' : ''
-        }`}
-        title={hoverOver}
-      >
+    <Link href={destinationUrl}>
+      <div style={{ cursor: 'pointer' }} className="tmshp_carousel">
         <div
-          className="banner__wrapper"
-          style={{
-            background: `url(${backgroundImage}) no-repeat`,
-          }}
+          className={`banner ${
+            halfWidth ? 'banner--half' : ''
+          } banner--var${getBannerVariant(bannerType)} ${
+            !hideBorder ? 'banner--border' : ''
+          }`}
+          title={hoverOver}
         >
-          <div className="banner__content-wrapper">
-            <div className="banner__content">
-              <p className="banner__deal">
-                {template === 'saveUpTo' ? (
-                  <span className="banner__deal-text">
-                    save
-                    <span className="banner__deal-up-to">up to</span>
-                  </span>
-                ) : (
-                  <span className="banner__deal-save">{template}</span>
-                )}
+          <div
+            className="banner__wrapper"
+            style={{
+              background: `url(${backgroundImage}) no-repeat`,
+            }}
+          >
+            <div className="banner__content-wrapper">
+              <div className="banner__content">
+                <p className="banner__deal">
+                  {template === 'saveUpTo' ? (
+                    <span className="banner__deal-text">
+                      save
+                      <span className="banner__deal-up-to">up to</span>
+                    </span>
+                  ) : (
+                    <span className="banner__deal-save">{template}</span>
+                  )}
 
-                <BannerTitle
-                  type={skuInfoDropdown}
-                  skuPrice={
-                    mainData
-                      ? incVat
-                        ? mainData.price
-                        : mainData.exVatPrice
-                      : undefined
-                  }
-                  skuWasPrice={
-                    mainData
-                      ? incVat
-                        ? mainData.priceWas
-                        : mainData.priceWasExVat
-                      : undefined
-                  }
-                  freeTypePound={incVat ? freeTypePoundInc : freeTypePoundEx}
-                  freeTypePercent={freeTypePercent}
+                  <BannerTitle
+                    type={skuInfoDropdown}
+                    skuPrice={
+                      mainData
+                        ? incVat
+                          ? mainData.price
+                          : mainData.exVatPrice
+                        : undefined
+                    }
+                    skuWasPrice={
+                      mainData
+                        ? incVat
+                          ? mainData.priceWas
+                          : mainData.priceWasExVat
+                        : undefined
+                    }
+                    freeTypePound={incVat ? freeTypePoundInc : freeTypePoundEx}
+                    freeTypePercent={freeTypePercent}
+                  />
+                </p>
+                <p
+                  className="banner__text"
+                  dangerouslySetInnerHTML={{ __html: freeTypeContent }}
                 />
-              </p>
-              <p
-                className="banner__text"
-                dangerouslySetInnerHTML={{ __html: freeTypeContent }}
+              </div>
+            </div>
+            <div className="banner__img-align">
+              <ResponsiveImage
+                images={images}
+                alt={hoverOver}
+                className="banner__img"
+                style={{
+                  transform: `translate(${x}px, ${y}px)`,
+                }}
               />
             </div>
-          </div>
-          <div className="banner__img-align">
-            <ResponsiveImage
-              images={images}
-              alt={hoverOver}
-              className="banner__img"
-              style={{
-                transform: `translate(${x}px, ${y}px)`,
-              }}
-            />
-          </div>
 
-          <img src={webIcon} className="banner__promo-icon" alt="" />
+            <img src={webIcon} className="banner__promo-icon" alt="" />
 
-          {roundelData && (
-            <div className="price-point pp--pound">
-              <div className="pp__tmsg">
-                {pricePoint === 'fromOnly' ? 'FROM ONLY' : 'ONLY'}
-              </div>
-              <div className="pp__price">
-                <sup className="pp__pnd">£</sup>
-                <span className="pp_numbs">
-                  {incVat
-                    ? roundelData.price.toString().split('.')[0]
-                    : roundelData.exVatPrice.toString().split('.')[0]}
-                  <span className="pp_vat">
-                    {incVat ? 'INC VAT' : 'EX VAT'}
-                  </span>
-                </span>
-                <sup className="pp__pnc">
-                  .
-                  {incVat
-                    ? roundelData.price.toString().split('.')[1]
-                    : roundelData.exVatPrice.toString().split('.')[1]}
-                </sup>
-              </div>
-              {!hideWasPrice && (
-                <div className="pp__bmsg">
-                  Was £
-                  {incVat ? roundelData.priceWas : roundelData.priceWasExVat}
+            {roundelData && (
+              <div className="price-point pp--pound">
+                <div className="pp__tmsg">
+                  {pricePoint === 'fromOnly' ? 'FROM ONLY' : 'ONLY'}
                 </div>
-              )}
-            </div>
-          )}
+                <div className="pp__price">
+                  <sup className="pp__pnd">£</sup>
+                  <span className="pp_numbs">
+                    {incVat
+                      ? roundelData.price.toString().split('.')[0]
+                      : roundelData.exVatPrice.toString().split('.')[0]}
+                    <span className="pp_vat">
+                      {incVat ? 'INC VAT' : 'EX VAT'}
+                    </span>
+                  </span>
+                  <sup className="pp__pnc">
+                    .
+                    {incVat
+                      ? roundelData.price.toString().split('.')[1]
+                      : roundelData.exVatPrice.toString().split('.')[1]}
+                  </sup>
+                </div>
+                {!hideWasPrice && (
+                  <div className="pp__bmsg">
+                    Was £
+                    {incVat ? roundelData.priceWas : roundelData.priceWasExVat}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-      </a>
-    </div>
+      </div>
+    </Link>
   );
 };
 

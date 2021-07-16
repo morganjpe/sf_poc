@@ -4,6 +4,7 @@ import { BrProps } from '@bloomreach/react-sdk';
 
 // components
 import FullWidthBanner from 'components/banners/fullWidthBanner';
+import HeroBanner from 'components/banners/heroBanner';
 import ProductGallery from '../../cards/product';
 import TextContent from '../../textContent';
 import ImageBanner from '../../banners/imageBanner';
@@ -87,7 +88,7 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
   if (data?.contentType === 'brxsaas:BannerViewAll') {
     const { destinationUrl, dealText } = data;
     return (
-      <div className="row">
+      <div style={{ position: 'relative' }} className="row">
         <BannerViewAll
           content={page.getContent(content)}
           destinationUrl={destinationUrl}
@@ -97,17 +98,38 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
     );
   }
 
+  if (data?.contentType === 'brxsaas:heroBanner') {
+    console.log(content, '???-');
+
+    const {
+      destinationUrl,
+      internalUrl: { $ref: pageRef },
+    } = data;
+
+    const internal = page.getContent(pageRef);
+    const newUrl = internal ? internal.getUrl() : destinationUrl;
+
+    return (
+      <HeroBanner
+        {...(data as any)}
+        content={page.getContent(content)}
+        destinationUrl={newUrl}
+      />
+    );
+  }
+
   if (data?.contentType === 'brxsaas:BannerFullWidth') {
     const {
-      internalUrl: { $ref: pageRef },
+      internalUrl,
       externalUrl,
       responsiveImage: { desktopImage, tabletImage, mobileImage },
       isFullWidth,
     } = data;
 
     let url = externalUrl;
-    if (pageRef.length) {
-      url = page.getContent(pageRef)?.getUrl();
+
+    if (internalUrl && internalUrl?.$ref.length) {
+      url = page.getContent(internalUrl.$ref)?.getUrl();
     }
 
     return (
@@ -121,7 +143,7 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
     );
   }
 
-  return <div>invalid document type</div>;
+  return page.isPreview() ? <div>invalid document type</div> : <div />;
 };
 
 export default FullGrid;

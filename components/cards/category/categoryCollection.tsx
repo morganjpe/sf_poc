@@ -40,7 +40,7 @@ const CategoryCollection = ({
 
         return (
           <div
-            key={cardData.id}
+            key={`${cardData.id}_${Date.now()}`}
             className={`lg-${24 / desktop} md-${24 / tablet} sm-${
               24 / mobile
             } cols`}

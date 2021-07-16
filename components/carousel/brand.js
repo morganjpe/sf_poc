@@ -4,12 +4,7 @@ import Slider from 'react-slick';
 
 const SliderItem = ({ image, url, name }) => (
   <div className="mt__item" title={name} style={{ color: '#fff' }}>
-    <Link
-      href={url}
-      className="cat-link"
-      //   style={{ background: ' #0053a0' }}
-      //   tabIndex="-1"
-    >
+    <Link href={url} className="cat-link">
       <div>
         <div className="mt__item-img" style={{ background: ' #f6f6f6' }}>
           <img

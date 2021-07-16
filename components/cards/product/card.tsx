@@ -27,8 +27,6 @@ const Card = ({
 
   if (isError) return <div />;
 
-  console.log(pricePoint);
-
   return (
     <div className="ct__pt">
       <div

@@ -54,10 +54,15 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
       <BrPage {...BrMapping}>
         <BrComponent path="menu">
           <Header />
+          {/* <Fuds /> */}
         </BrComponent>
-
-        <Fuds />
-        <Component {...pageProps} />
+        <div id="container-main" className="wrp">
+          <div className="inner">
+            <BrComponent path="main" />
+            <br />
+            <Component {...pageProps} />
+          </div>
+        </div>
         <BrComponent path="footer">
           <Footer />
         </BrComponent>

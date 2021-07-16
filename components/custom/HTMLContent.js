@@ -1,15 +1,15 @@
 import ReactHtmlParser from 'react-html-parser';
 
 const HTMLContent = ({ component, page }) => {
-  const params = component.getParameters();
+  const { document1 } = component.getParameters();
+  const pageData = page.getContent(document1);
 
-  if (params.document1 === '') {
-    return <div />;
+  if (pageData) {
+    const { html } = pageData.getData();
+    return <div>{ReactHtmlParser(html)}</div>;
   }
 
-  const { html } = page.getContent(params.document1).getData();
-
-  return <div>{ReactHtmlParser(html)}</div>;
+  return <div />;
 };
 
 export default HTMLContent;
