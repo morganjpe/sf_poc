@@ -1,19 +1,34 @@
 import axios from 'axios';
 
+import { useRouter } from 'next/router';
+
 // components
 import Breadcrumbs from '../../components/product/breadcrumbs';
 
-const Product = (props) => (
-  <div>
-    <Breadcrumbs />
-  </div>
-);
+const Product = () => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>is loading...</div>;
+  }
+
+  return (
+    <div>
+      <Breadcrumbs />
+    </div>
+  );
+};
 
 export default Product;
 
+export const getStaticPaths = async () => ({
+  paths: [{ params: { id: '91024' } }],
+  fallback: true,
+});
+
 export const getStaticProps = async (context) => {
   const {
-    query: { id },
+    params: { id },
   } = context;
 
   try {
@@ -22,8 +37,11 @@ export const getStaticProps = async (context) => {
     );
     return {
       props: { ...data },
+      revalidate: 1,
     };
   } catch (error) {
-    throw new Error(error);
+    return {
+      props: {},
+    };
   }
 };
