@@ -67,6 +67,12 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 };
 
 MyApp.getInitialProps = async ({ ctx }: AppContext): Promise<MyAppProps> => {
+  // const configuration = {
+  //   path: '',
+  //   endpoint: 'http://127.0.0.1:3000/api/dewalt',
+  //   endpointQueryParameter: 'endpoint',
+  // };
+
   const configuration = {
     path: `${ctx.asPath}`,
     endpoint:
