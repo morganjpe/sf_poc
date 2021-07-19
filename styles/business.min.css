@@ -163,7 +163,7 @@ ul.mn li a:focus {
   max-width: 100%;
 }
 .btt .flag {
-  background-image: url(/img/comp-dummy-temp-flag.png);
+  background-image: url(/fusionx/img/comp-dummy-temp-flag.png);
   background-position: 0 0;
   background-repeat: no-repeat;
   display: inline-block;
@@ -553,19 +553,19 @@ ul.mn li a:focus {
   }
 }
 .help-banner__key-acc-bg {
-  background-image: url(/img/help/help-key-accounts.png);
+  background-image: url(/fusionx/img/help/help-key-accounts.png);
   background-position: right -30px;
   background-repeat: no-repeat;
 }
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
   .help-banner__key-acc-bg {
-    background-image: url(/img/help/help-key-taccounts.png);
+    background-image: url(/fusionx/img/help/help-key-taccounts.png);
     background-position: right bottom;
   }
 }
 @media only screen and (max-width: 40em) {
   .help-banner__key-acc-bg {
-    background-image: url(/img/help/help-key-maccounts.png);
+    background-image: url(/fusionx/img/help/help-key-maccounts.png);
     background-position: right bottom;
   }
 }
@@ -651,7 +651,7 @@ ul.mn li a:focus {
   }
 }
 .help-banner__bullet-bg ul.bullet li {
-  background-image: url(/img/help/tick.png);
+  background-image: url(/fusionx/img/help/tick.png);
   background-repeat: no-repeat;
   background-position: -2px 0;
   line-height: 18px;
@@ -660,7 +660,7 @@ ul.mn li a:focus {
 }
 @media only screen and (max-width: 40em) {
   .help-banner__bullet-bg ul.bullet li {
-    background-image: url(/img/help/mtick.png);
+    background-image: url(/fusionx/img/help/mtick.png);
   }
 }
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
@@ -810,7 +810,7 @@ p.del-banner span {
 }
 @media only screen and (min-width: 40em) {
   .fixs-signup .fixs-reg-banner-container {
-    background: url(/gfx/fixes-signup.png) 42% bottom no-repeat #fbfbfb;
+    background: url(/fusionx/gfx/fixes-signup.png) 42% bottom no-repeat #fbfbfb;
     background-size: contain;
   }
   .fixs-signup .fixs-reg-banner-container .right-border--dashed:after {
@@ -819,7 +819,7 @@ p.del-banner span {
     top: 0;
     height: 100%;
     width: 1px;
-    content: "";
+    content: '';
     border-right: 1px dashed #ccc;
   }
   .fixs-signup .fixs-reg-banner-container .fixs-reg-banner--fixsmembership {
@@ -831,7 +831,8 @@ p.del-banner span {
 }
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
   .fixs-signup .fixs-reg-banner-container {
-    background: url(/gfx/fixes-signup.png) 21% bottom/300px no-repeat #fbfbfb;
+    background: url(/fusionx/gfx/fixes-signup.png) 21% bottom/300px no-repeat
+      #fbfbfb;
   }
   .fixs-signup .fixs-reg-banner-container h3 {
     width: 250px;
@@ -845,15 +846,15 @@ p.del-banner span {
     top: 0;
     height: 100%;
     width: 1px;
-    content: "";
+    content: '';
     border-right: 1px dashed #ccc;
   }
 }
 @media only screen and (max-width: 40em) {
   .fixs-signup .fixs-reg-banner-container {
     margin: 0;
-    background: url(/gfx/fixes-signup.png) bottom 178px right 0/260px no-repeat
-      #fbfbfb;
+    background: url(/fusionx/gfx/fixes-signup.png) bottom 178px right 0/260px
+      no-repeat #fbfbfb;
     padding: 20px 0 0;
   }
   .fixs-signup .fixs-reg-banner-container h3 {
@@ -878,7 +879,7 @@ p.del-banner span {
   }
 }
 .fixs-signup .fixs-signup--signin {
-  background: url(/gfx/fixes-signupbg.png) 90% bottom no-repeat;
+  background: url(/fusionx/gfx/fixes-signupbg.png) 90% bottom no-repeat;
   overflow: hidden;
   min-height: 526px;
 }
@@ -913,7 +914,7 @@ p.del-banner span {
 }
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
   .inner.chooseus {
-    background-image: url(/gfx/tablet-appstore-bg.png);
+    background-image: url(/fusionx/gfx/tablet-appstore-bg.png);
     background-position: right 9px bottom 9px;
     background-repeat: no-repeat;
   }
@@ -931,7 +932,7 @@ p.del-banner span {
 }
 @media only screen and (min-width: 64.063em) {
   .inner.chooseus {
-    background-image: url(/gfx/desktop-appstore.png);
+    background-image: url(/fusionx/gfx/desktop-appstore.png);
     background-position: right 9px bottom 9px;
     background-repeat: no-repeat;
   }
@@ -966,7 +967,7 @@ p.del-banner span {
     width: 50%;
   }
   .inner.inner-error.site-down {
-    background: url(/img/site-down-bg.jpg) no-repeat;
+    background: url(/fusionx/img/site-down-bg.jpg) no-repeat;
     background-position: right 9px bottom 9px;
     background-repeat: no-repeat;
   }
