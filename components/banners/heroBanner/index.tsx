@@ -45,7 +45,13 @@ const HeroBanner = ({
 
   return (
     <div style={{ position: 'relative' }}>
-      <BrManageContentButton content={content} />
+      <BrManageContentButton
+        content={content}
+        documentTemplateQuery="new-banner-document"
+        folderTemplateQuery="new-banner-folder"
+        parameter="document"
+        relative
+      />
       <Banner {...props} />
     </div>
   );

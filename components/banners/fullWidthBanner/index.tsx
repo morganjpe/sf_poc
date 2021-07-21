@@ -1,17 +1,21 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { BrManageContentButton } from '@bloomreach/react-sdk';
+import { Content } from '@bloomreach/spa-sdk';
 import ResponsiveImage from '../../responsiveImage';
 
 interface FullWidthBannerProps {
   url: string;
   images: string[];
   isFullWidth: boolean;
+  content: Content | undefined;
 }
 
 const FullWidthBanner = ({
   images,
   url,
   isFullWidth,
+  content,
 }: FullWidthBannerProps): JSX.Element => (
   <FullWidthBanner.Container>
     <div
@@ -21,6 +25,7 @@ const FullWidthBanner = ({
           : 'full_width_banner paint-dec-deals'
       }
     >
+      <BrManageContentButton content={content} />
       <div className="full_width_wrp">
         <div className="full_width_banner">
           <div className="header-container">

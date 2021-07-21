@@ -1,4 +1,5 @@
 import ReactHtmlParser from 'react-html-parser';
+import { BrManageContentButton } from '@bloomreach/react-sdk';
 
 const HTMLContent = ({ component, page }) => {
   const { document1 } = component.getParameters();
@@ -6,7 +7,15 @@ const HTMLContent = ({ component, page }) => {
 
   if (pageData) {
     const { html } = pageData.getData();
-    return <div>{ReactHtmlParser(html)}</div>;
+    return (
+      <div
+        className={page.isPreview() ? 'has-edit-button' : ''}
+        style={{ position: 'relative' }}
+      >
+        <BrManageContentButton content={pageData} />
+        {ReactHtmlParser(html)}
+      </div>
+    );
   }
 
   return <div />;

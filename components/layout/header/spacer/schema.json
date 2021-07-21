@@ -1,0 +1,24 @@
+{
+  "id": "SF/Spacer",
+  "extends": "base/component",
+  "hidden": false,
+  "system": false,
+  "xtype": null,
+  "ctype": "Spacer",
+  "label": "Spacer",
+  "icon": "https://play-lh.googleusercontent.com/NbMdW_rCPAkYY7MTZ1_Pc9KyGvlrr3cYmj48Zxvefj2YP0pb59epHMslJoEyPAfvJA",
+  "parameters": [
+    {
+      "name": "height",
+      "valueType": "string",
+      "required": true,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "0",
+      "displayName": null,
+      "system": false,
+      "config": null
+    }
+  ],
+  "fieldGroups": []
+}

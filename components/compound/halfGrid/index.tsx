@@ -21,17 +21,29 @@ const HalfGridInterpreter = ({
 
     if (contentType === 'brxsaas:ProductGallery') {
       return (
-        <ProductGallery
-          isPreview={page.isPreview()}
-          page={page}
-          products={getProductGalleryData(space, page)}
-        />
+        <div className="row">
+          <ProductGallery
+            isPreview={page.isPreview()}
+            page={page}
+            products={getProductGalleryData(space, page)}
+          />
+        </div>
       );
     }
 
     if (contentType === 'brxsaas:heroBanner') {
+      const { destinationUrl, internalUrl } = data.getData();
+
+      const internal = page.getContent(internalUrl?.$ref);
+      const newUrl = internal ? internal.getUrl() : destinationUrl;
+
       return (
-        <HeroBanner {...(data.getData() as any)} content={data} halfWidth />
+        <HeroBanner
+          {...(data.getData() as any)}
+          content={data}
+          halfWidth
+          destinationUrl={newUrl}
+        />
       );
     }
   }
@@ -43,15 +55,15 @@ const HalfGrid = ({ component, page }: BrProps): JSX.Element => {
   const { left, right } = component.getParameters();
 
   return (
-    <div className={page.isPreview() ? 'has-edit-button row' : 'row'}>
-      <div className="row-wrp--mod">
-        <div className="lg-12 md-24 sm-24 cols">
-          <div className="row">
+    <div className="row">
+      <div className={page.isPreview() ? 'has-edit-button row' : ''}>
+        <div className="row-wrp--mod">
+          <div className="lg-12 md-24 sm-24 cols">
             <HalfGridInterpreter space={left} page={page} />
           </div>
-        </div>
-        <div className="lg-12 md-24 sm-24 cols">
-          <HalfGridInterpreter space={right} page={page} />
+          <div className="lg-12 md-24 sm-24 cols">
+            <HalfGridInterpreter space={right} page={page} />
+          </div>
         </div>
       </div>
     </div>
