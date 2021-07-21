@@ -3,12 +3,7 @@ import { BrComponent, BrPage } from '@bloomreach/react-sdk';
 
 import { AppProps, AppContext } from 'next/app';
 
-import {
-  initialize,
-  TYPE_CONTAINER_ITEM_UNDEFINED,
-  isPage,
-  isLink,
-} from '@bloomreach/spa-sdk';
+import { initialize, TYPE_CONTAINER_ITEM_UNDEFINED } from '@bloomreach/spa-sdk';
 
 import Header from 'components/layout/header';
 import Footer from 'components/layout/footer';
@@ -18,12 +13,12 @@ import '../styles/business.min.css';
 import '../styles/sfx.min.css';
 import '../styles/fuds.css';
 
-// state
-
+// components
 import DotdAssortment from 'components/compound/dotdAssortment';
 import HTMLContent from 'components/custom';
 import HalfGrid from 'components/compound/halfGrid';
 import FullGrid from 'components/compound/fullGrid';
+import Spacer from 'components/layout/spacer';
 import VatProvider from '../state/vat';
 
 const mapping = {
@@ -32,6 +27,7 @@ const mapping = {
   HalfGrid,
   FullGrid,
   [TYPE_CONTAINER_ITEM_UNDEFINED]: () => <div />,
+  Spacer,
 };
 
 interface MyAppProps {
@@ -90,8 +86,6 @@ MyApp.getInitialProps = async ({ ctx }: AppContext): Promise<MyAppProps> => {
   //   endpoint: 'http://127.0.0.1:3000/api/dewalt',
   //   endpointQueryParameter: 'endpoint',
   // };
-
-  console.log(ctx.asPath);
 
   const configuration = {
     path: `${ctx.asPath}`,

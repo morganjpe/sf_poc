@@ -27,13 +27,11 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
   if (data?.contentType === 'brxsaas:ProductGallery') {
     return (
       <div className="row">
-        <div className="row-wrp--mod">
-          <ProductGallery
-            page={page}
-            isPreview={page.isPreview()}
-            products={getProductGalleryData(content, page)}
-          />
-        </div>
+        <ProductGallery
+          page={page}
+          isPreview={page.isPreview()}
+          products={getProductGalleryData(content, page)}
+        />
       </div>
     );
   }
@@ -99,14 +97,9 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
   }
 
   if (data?.contentType === 'brxsaas:heroBanner') {
-    console.log(content, '???-');
+    const { destinationUrl, internalUrl } = data;
 
-    const {
-      destinationUrl,
-      internalUrl: { $ref: pageRef },
-    } = data;
-
-    const internal = page.getContent(pageRef);
+    const internal = page.getContent(internalUrl?.$ref);
     const newUrl = internal ? internal.getUrl() : destinationUrl;
 
     return (
@@ -133,11 +126,15 @@ const FullGrid = ({ component, page }: BrProps): JSX.Element => {
     }
 
     return (
-      <div className="row">
+      <div
+        style={{ position: 'relative' }}
+        className={page.isPreview() ? 'row has-edit-button' : 'row'}
+      >
         <FullWidthBanner
           url={url}
           images={[mobileImage, tabletImage, desktopImage]}
           isFullWidth={isFullWidth}
+          content={page.getContent(content)}
         />
       </div>
     );
