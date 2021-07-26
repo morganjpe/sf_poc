@@ -24,7 +24,6 @@ interface TextContentProps {
 const TextContent = ({ data, page }: TextContentProps): JSX.Element => {
   const { title, titleColor, viewAll, content, ref } = data;
 
-  console.log(content, page);
   return (
     <div
       style={{ position: 'relative' }}

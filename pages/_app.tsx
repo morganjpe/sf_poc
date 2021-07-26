@@ -50,6 +50,10 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     );
   }
 
+  const Page = initialize({ httpClient: axios }, page);
+
+  console.log(Page);
+
   const BrMapping = {
     mapping,
     page,
@@ -65,7 +69,12 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
         <BrComponent path="menu">
           <Header />
         </BrComponent>
+
         <div id="container-main" className="wrp">
+          <div style={{ position: 'relative' }}>
+            <BrComponent path="top" />
+          </div>
+
           <div className="inner">
             <BrComponent path="main" />
             <br />
