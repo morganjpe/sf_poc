@@ -31,7 +31,7 @@ const FullWidthBanner = ({
           <div className="header-container">
             <div className="flex-container">
               <Link href={url}>
-                <ResponsiveImage images={images} />
+                <ResponsiveImage style={{ width: '100%' }} images={images} />
               </Link>
             </div>
           </div>

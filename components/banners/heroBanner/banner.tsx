@@ -108,10 +108,14 @@ const fullWidth = ({
       if (skuInfo || skuRoundel) {
         try {
           handleProductLoad();
-          const { data: response } = await axios.get(
-            `${apiPath}${skuInfo},${skuRoundel}`
-          );
+          const { data: response } = await axios.get(`/api/prodnew`, {
+            params: {
+              search: `${skuInfo},${skuRoundel}`,
+            },
+          });
           const { data } = response;
+
+          console.log(response, '????');
 
           // there are products
           if (data.length) {
@@ -141,6 +145,8 @@ const fullWidth = ({
             handleProductError('There has been an error');
           }
         } catch (error) {
+          console.log(error);
+
           handleProductError('There has been an error');
         }
       }

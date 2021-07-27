@@ -4,10 +4,6 @@ interface LayoutIntepreterProps {
 
 const LayoutIntepreter = ({
   layoutType,
-}: LayoutIntepreterProps): JSX.Element => {
-  console.log(layoutType);
-
-  return <div />;
-};
+}: LayoutIntepreterProps): JSX.Element => <div />;
 
 export default LayoutIntepreter;

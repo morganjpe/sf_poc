@@ -52,8 +52,6 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 
   const Page = initialize({ httpClient: axios }, page);
 
-  console.log(Page);
-
   const BrMapping = {
     mapping,
     page,
