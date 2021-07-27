@@ -6,23 +6,8 @@ interface TextContentProps {
   data: any;
 }
 
-// content: "<p>This is some content</p>"
-// contentType: "brxsaas:TextContent"
-// displayName: "dotd assortment title"
-// id: "164a3482-de6a-459e-9acc-f4bb436e4db4"
-// localeString: "en"
-// name: "dotd-assortment-title"
-// title: "Dotd / Assortment"
-// titleColor: ""
-// viewAll: ""
-
-// border-bottom: 1px solid #636363;
-//     float: left;
-//     margin: 20px 0 20px;
-//     position: relative;
-
 const TextContent = ({ data, page }: TextContentProps): JSX.Element => {
-  const { title, titleColor, viewAll, content, ref } = data;
+  const { title, titleColor, content, ref } = data;
 
   return (
     <div
